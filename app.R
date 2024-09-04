@@ -10,12 +10,13 @@ header <- dashboardHeader(
 body <- dashboardBody(
   fluidRow(
     column(width = 9,
-           # box(width = NULL, solidHeader = TRUE,
-           #     tags$div(id = "sunburstplot")
-           # )#,
-           box(width = NULL,
-               sunburstAtlasOutput("sunburst_plot")
-               )
+           box(
+             width = NULL, solidHeader = FALSE,
+             sunburstAtlasOutput("sunburst_plot")
+           ),
+           box(width = NULL, solidHeader = TRUE,
+               uiOutput("click_data")
+           )#,
     )
   )
 )
@@ -33,6 +34,16 @@ server <- function(input, output, session) {
     design <- jsonlite::read_json("dev/design.json")
     sunburstAtlas(data, design)
   })
+
+  observeEvent(input$sunburst_plot_click_data, {
+    click_event <- req(input$sunburst_plot_click_data)
+    print(click_event)
+
+    output$click_data <- renderUI({
+      shiny::HTML(click_event$d)
+    })
+  })
+
 
 }
 

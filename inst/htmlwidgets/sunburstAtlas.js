@@ -28,13 +28,37 @@ HTMLWidgets.widget({
         //var chartData = x.data;
         var pathwayAnalysisDTO = x.data;
         var design = x.design;
+        var dispatch_ = d3.dispatch("mouseover","mouseleave","click");
         console.log(">>> ID: " + elementId);
 
-        //requirejs(['atlascharts/sunburst', 'resultDataConverter'], function (Sunburst, ResultDataConverter) {
-          //var cartData;
+        function click(d,i, data) {
+          console.log(">>> click event -- i: " + i)
+          console.log(">>> click event -- d: " + d)
+          var sequenceArray = d.ancestors().reverse();
+          sequenceArray.shift(); // remove root node from the array
+
+          dispatch_.call("click", sequenceArray.map(
+            function(d) {
+
+              Shiny.setInputValue(
+                elementId + "_click_data",
+                {
+                  d: d.data.name,
+                  i: i,
+                  data: data
+                },
+                sequenceArray,
+                {priority: "event"}
+              );
+              return d.data.name
+            }
+          ));
+        }
+
+
+
           var plot = new Sunburst();
           var resultDataConverter = new ResultDataConverter();
-          //var target = document.querySelector('#plot');
           var target = document.getElementById(elementId);
 
           function split(node) {
@@ -69,7 +93,11 @@ HTMLWidgets.widget({
 
 
             chartData.cohortPathways.forEach(pathwayData => {
-              plot.render(pathwayData.pathway, target, 600, 600, { split: split, minRadians: 0, colors: chartData.colors });
+              var options = { split: split, minRadians: 0, colors: chartData.colors,
+                onclick: click
+              };
+
+              plot.render(pathwayData.pathway, target, 600, 600, options);
             });
           }
 

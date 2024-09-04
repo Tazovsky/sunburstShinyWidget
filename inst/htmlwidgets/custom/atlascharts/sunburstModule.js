@@ -97,7 +97,7 @@ function SunburstModule(d3, Chart) {
         .style("opacity", d => d.isSplit ? 0 : 1)
         .on('mouseover', d => self.tip.show(Object.assign({}, d, { tipDirection: self.getTipDirection(d), tipOffset: self.getTipOffset(d, arc) }), event.target))
         .on('mouseout', d => self.tip.hide(d, event.target))
-        .on('click', d => options.onclick && options.onclick(d));
+        .on('click', (d, i)=> options.onclick && options.onclick(d, i, data));
     }
   }
 
