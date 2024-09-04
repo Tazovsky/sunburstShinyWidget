@@ -1,7 +1,11 @@
 library(shinydashboard)
 library(shiny)
+library(dplyr)
 pkgload::load_all(".")
 
+chartData <- jsonlite::read_json("dev/chartData.json")
+design <- jsonlite::read_json("dev/design.json")
+eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
 header <- dashboardHeader(
   title = "Sunburst app"
@@ -15,7 +19,7 @@ body <- dashboardBody(
              sunburstAtlasOutput("sunburst_plot")
            ),
            box(width = NULL, solidHeader = TRUE,
-               uiOutput("click_data")
+               DT::DTOutput("click_data")
            )#,
     )
   )
@@ -30,20 +34,26 @@ ui <- dashboardPage(
 server <- function(input, output, session) {
 
   output$sunburst_plot <- renderSunburstAtlas({
-    data <- jsonlite::read_json("dev/chartData.json")
-    design <- jsonlite::read_json("dev/design.json")
-    sunburstAtlas(data, design)
+    sunburstAtlas(chartData, design)
   })
 
   observeEvent(input$sunburst_plot_click_data, {
     click_event <- req(input$sunburst_plot_click_data)
-    print(click_event)
 
-    output$click_data <- renderUI({
-      shiny::HTML(click_event$d)
+    event_code <- as.integer(click_event$d$name)
+    children <- click_event$d$children
+    data <- click_event$data
+
+    event_code_table <- eventCodes %>% dplyr::filter(code == event_code)
+    print(event_code_table)
+    output$click_data <- DT::renderDT({
+      event_code_table
     })
   })
 
+  observeEvent(input$sunburst_plot_chart_colors, {
+    print(input$sunburst_plot_chart_colors)
+  })
 
 }
 
