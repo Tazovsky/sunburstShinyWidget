@@ -55,6 +55,11 @@ server <- function(input, output, session) {
     print(input$sunburst_plot_chart_colors)
   })
 
+  observeEvent(input$sunburst_plot_chart_data_converted, {
+    chart_data <- req(input$sunburst_plot_chart_data_converted)
+    print(chart_data$eventCohorts)
+  })
+
 }
 
 shinyApp(ui = ui, server = server)

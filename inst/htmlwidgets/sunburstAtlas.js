@@ -32,6 +32,7 @@ HTMLWidgets.widget({
         var dispatch_ = d3.dispatch("mouseover","mouseleave","click");
         console.log(">>> ID: " + elementId);
 
+        // -------
         function click(d,i, data) {
           console.log(">>> click event -- i: " + i)
           console.log(">>> click event -- d: " + d)
@@ -55,6 +56,16 @@ HTMLWidgets.widget({
             }
           ));
         }
+
+        function tooltipBuilder(d) {
+			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
+			    const stepBuilder = (step) => `<div class="${this.classes('tip-step')}">${step.names.map(n => nameBuilder(n.name, n.color)).join("")}</div>`;
+
+			    const path = this.getPathToNode(d);
+			    return `<div class="${this.classes('tip-container')}">${path.map(s => stepBuilder(s)).join("")}</div>`;
+		   }
+
+        // -----------
 
           var plot = new Sunburst();
           var resultDataConverter = new ResultDataConverter();
@@ -89,10 +100,20 @@ HTMLWidgets.widget({
             //design = JSON.parse(document.querySelector("#design").value);
 
             chartData = resultDataConverter.convert(pathwayAnalysisDTO, design);
+            chartData.eventCohorts.forEach(event => {
+              event.color = chartData.colors(event.code);
+            });
 
+            Shiny.setInputValue(
+                elementId + "_chart_data_converted",
+                chartData,
+                {priority: "event"}
+            );
+
+            //console.log(">>> chartData: \n" + JSON.stringify(chartData));
             chartData.cohortPathways.forEach(pathwayData => {
               var options = { split: split, minRadians: 0, colors: chartData.colors,
-                onclick: click
+                onclick: click//, tooltip: tooltipBuilder
               };
 
 
