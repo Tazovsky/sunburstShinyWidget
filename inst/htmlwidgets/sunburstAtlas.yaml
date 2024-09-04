@@ -1,0 +1,62 @@
+# (uncomment to add a dependency)
+dependencies:
+  - name: d3
+    version: 4.10.0
+    src: htmlwidgets
+    script:
+      - d3.min.js
+  - name: numeral
+    version: 2.0.6
+    src: htmlwidgets
+    script:
+      - numeral.min.js
+  - name: d3-tip
+    version: 0.7.1
+    src: htmlwidgets
+    script:
+      - d3-tip.min.js
+  - name: lodash
+    version: 4.17.11
+    src: htmlwidgets
+    script:
+      - lodash.min.js
+  # - name: config2.js
+  #   version: 0.0.1
+  #   src: htmlwidgets
+  #   script:
+  #     - config2.js
+
+  - name: require.js
+    version: 2.3.3
+    src: htmlwidgets
+    # script:
+    #   - require.js
+      # - config.js
+      # - resultDataConverter.js
+    stylesheet:
+      - example.css
+      - chart.css
+  # - name: config
+  #   version: 0.0.1
+  #   src: htmlwidgets
+  #   script:
+  #     - resultDataConverter.js
+  #     - config.js
+  #   stylesheet:
+  #     - example.css
+  #     - chart.css
+  # - name: bundle
+  #   version: 0.0.1
+  #   src: htmlwidgets
+  #   script:
+  #     - bundle.js
+
+  - name: customModules
+    version: 0.0.1
+    src: htmlwidgets/custom/atlascharts
+    script:
+      - chartModule.js
+      - resultDataConverterModule.js
+      - sunburstModule.js
+      - utilModule.js
+
