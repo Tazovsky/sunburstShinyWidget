@@ -6,6 +6,7 @@ HTMLWidgets.widget({
 
   factory: function(el, width, height) {
     var elementId = el.id;
+    document.getElementById(elementId).widget = this;
     console.log(">>>>> init starts");
     var lodash = _;
     var d3tip = d3.tip;
@@ -43,7 +44,7 @@ HTMLWidgets.widget({
               Shiny.setInputValue(
                 elementId + "_click_data",
                 {
-                  d: d.data.name,
+                  d: d.data,
                   i: i,
                   data: data
                 },
@@ -54,8 +55,6 @@ HTMLWidgets.widget({
             }
           ));
         }
-
-
 
           var plot = new Sunburst();
           var resultDataConverter = new ResultDataConverter();
@@ -91,11 +90,12 @@ HTMLWidgets.widget({
 
             chartData = resultDataConverter.convert(pathwayAnalysisDTO, design);
 
-
             chartData.cohortPathways.forEach(pathwayData => {
               var options = { split: split, minRadians: 0, colors: chartData.colors,
                 onclick: click
               };
+
+
 
               plot.render(pathwayData.pathway, target, 600, 600, options);
             });
