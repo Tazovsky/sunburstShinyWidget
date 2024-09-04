@@ -59,4 +59,5 @@ dependencies:
       - resultDataConverterModule.js
       - sunburstModule.js
       - utilModule.js
+      # - initModules.js
 

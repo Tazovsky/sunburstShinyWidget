@@ -1,4 +1,4 @@
-function resultDataConverterModule(d3, AtlasCharts) {
+function resultDataConverterModule(d3, Util) {
 
     class ResultDataConverter {
 
@@ -132,7 +132,7 @@ function resultDataConverterModule(d3, AtlasCharts) {
         }
 
         buildHierarchy(data) {
-            return AtlasCharts.util
+            return Util
                 .buildHierarchy(data,
                     d => d.path,
                     d => d.personCount

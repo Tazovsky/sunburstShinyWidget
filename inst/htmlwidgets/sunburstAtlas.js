@@ -5,19 +5,33 @@ HTMLWidgets.widget({
   type: 'output',
 
   factory: function(el, width, height) {
-    var elementId = el.id
+    var elementId = el.id;
+    console.log(">>>>> init starts");
+    var lodash = _;
+    var d3tip = d3.tip;
+
+    var Chart = ChartModule(d3, lodash, d3tip);
+    var Sunburst = SunburstModule(d3, Chart);
+
+    var util = utilModule(d3);
+
+    var ResultDataConverter = resultDataConverterModule(d3, util);
+
+    var Sunburst = SunburstModule(d3, Chart);
+
+    console.log(">>>>> init ends");
     // TODO: define shared variables for this instance
 
     return {
 
       renderValue: function(x) {
-        var chartData = x.data;
+        //var chartData = x.data;
+        var pathwayAnalysisDTO = x.data;
         var design = x.design;
         console.log(">>> ID: " + elementId);
 
-        /*
-        requirejs(['atlascharts/sunburst', 'resultDataConverter'], function (Sunburst, ResultDataConverter) {
-          var cartData;
+        //requirejs(['atlascharts/sunburst', 'resultDataConverter'], function (Sunburst, ResultDataConverter) {
+          //var cartData;
           var plot = new Sunburst();
           var resultDataConverter = new ResultDataConverter();
           //var target = document.querySelector('#plot');
@@ -47,7 +61,6 @@ HTMLWidgets.widget({
             })
 
           }
-/*
           function refreshPlot() {
             //pathwayAnalysisDTO = JSON.parse(document.querySelector("#chartData").value);
             //design = JSON.parse(document.querySelector("#design").value);
@@ -60,15 +73,15 @@ HTMLWidgets.widget({
             });
           }
 
-
+          /*
           document.querySelector("#reload").addEventListener("click", function () {
             refreshPlot();
           });
+          */
           refreshPlot();
 
-        });
+        //});
 
-        */
       },
 
       resize: function(width, height) {
