@@ -29,7 +29,7 @@ HTMLWidgets.widget({
         //var chartData = x.data;
         var pathwayAnalysisDTO = x.data;
         var design = x.design;
-        var dispatch_ = d3.dispatch("mouseover","mouseleave","click");
+        var dispatch_ = d3.dispatch("mouseover", "click");
         console.log(">>> ID: " + elementId);
 
         // -------
@@ -56,7 +56,7 @@ HTMLWidgets.widget({
             }
           ));
         }
-
+/*
         function tooltipBuilder(d) {
 			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
 			    const stepBuilder = (step) => `<div class="${this.classes('tip-step')}">${step.names.map(n => nameBuilder(n.name, n.color)).join("")}</div>`;
@@ -64,7 +64,7 @@ HTMLWidgets.widget({
 			    const path = this.getPathToNode(d);
 			    return `<div class="${this.classes('tip-container')}">${path.map(s => stepBuilder(s)).join("")}</div>`;
 		   }
-
+*/
         // -----------
 
           var plot = new Sunburst();
@@ -110,13 +110,14 @@ HTMLWidgets.widget({
                 {priority: "event"}
             );
 
+            function tooltip_builder(d) {
+              tooltipBuilder(d, chartData, chartData.colors);
+            };
             //console.log(">>> chartData: \n" + JSON.stringify(chartData));
             chartData.cohortPathways.forEach(pathwayData => {
               var options = { split: split, minRadians: 0, colors: chartData.colors,
-                onclick: click//, tooltip: tooltipBuilder
+                onclick: click, tooltip: tooltip_builder
               };
-
-
 
               plot.render(pathwayData.pathway, target, 600, 600, options);
             });

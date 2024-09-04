@@ -20,6 +20,7 @@ function SunburstModule(d3, Chart) {
 
       const defaultOptions = {
         tooltip: (d) => {
+          //debugger;
           return `<div>No Tooltip Set</div>`;
         },
         minRadians: 0.005
