@@ -93,7 +93,10 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
         seq_len() %>%
         lapply(function(rowid) {
           x <-  event_cohorts() %>% dplyr::slice(rowid)
-          customActionButton(session$ns(paste0("cohortBtn-", x$code)), x$name, x$color, btn_font_size) %>%
+          customActionButton(inputId = session$ns(paste0("cohortBtn-", x$code)),
+                             label = x$name,
+                             color = x$color,
+                             font_size = btn_font_size) %>%
             as.character()
         }) %>%
         dplyr::tibble()
@@ -114,16 +117,17 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
             dplyr::bind_rows() %>%
             dplyr::rowwise() %>%
             dplyr::mutate(btns = customActionButton(
-              session$ns(paste0(name, "-", as.character(as.integer(Sys.time())))), name, color) %>% as.character())
+              session$ns(paste0(name, "-", as.character(as.integer(Sys.time())))), name, color, btn_font_size) %>% as.character())
 
-          tibble::tibble(btns = paste0(df$btns, collapse = " "))
+          tibble::tibble(Name = paste0(df$btns, collapse = " "),
+                         Count = path$count)
         }) %>%
         dplyr::bind_rows()
 
 
       output$selectedCohorts <- DT::renderDT(btns_df,
-                                             rownames = TRUE,
-                                             colnames = NULL,
+                                             rownames = FALSE,
+                                             # colnames = TRUE,
                                              escape = FALSE,
                                              options = list(dom = "t"))
 

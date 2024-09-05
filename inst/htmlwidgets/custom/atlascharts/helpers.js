@@ -21,7 +21,6 @@ function getPathToNode(node) {
 }
 */
 
-/*
 function getAncestors(node) {
 	var path = [];
 	var current = node;
@@ -75,7 +74,7 @@ function click(d,i, data, colors_fun, elementId) {
             }
           ));
         }
-*/
+
 
 class Helpers {
   constructor(d3) {
