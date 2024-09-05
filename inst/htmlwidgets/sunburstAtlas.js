@@ -32,10 +32,18 @@ HTMLWidgets.widget({
         var dispatch_ = d3.dispatch("mouseover", "click");
         console.log(">>> ID: " + elementId);
 
+        // Dimensions of sunburst
+          // https://github.com/timelyportfolio/sunburstR/blob/master/inst/htmlwidgets/sunburst.js#L35C61-L35C67
+          var width = el.getBoundingClientRect().width;
+          var height = el.getBoundingClientRect().height - 70;
+          var radius = Math.min(width, height) / 2;
+          console.log(">>> width: " + width + ", height: ", + height)
+
         // -------
         function click(d,i, data) {
           console.log(">>> click event -- i: " + i)
           console.log(">>> click event -- d: " + d)
+
           var sequenceArray = d.ancestors().reverse();
           sequenceArray.shift(); // remove root node from the array
 
@@ -119,7 +127,7 @@ HTMLWidgets.widget({
                 onclick: click, tooltip: tooltip_builder
               };
 
-              plot.render(pathwayData.pathway, target, 600, 600, options);
+              plot.render(pathwayData.pathway, target, width, height, options);
             });
           }
 
