@@ -1,65 +1,39 @@
-library(shinydashboard)
+# https://shiny.posit.co/blog/posts/bslib-dashboards/#hello-dashboards
+
 library(shiny)
+library(bslib)
 library(dplyr)
-pkgload::load_all(".")
+pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
+
+
+# Setup -------------------------------------------------------------------
 
 chartData <- jsonlite::read_json("dev/chartData.json")
 design <- jsonlite::read_json("dev/design.json")
 eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
-header <- dashboardHeader(
-  title = "Sunburst app"
-)
+# UI ----------------------------------------------------------------------
 
-body <- dashboardBody(
-  fluidRow(
-    column(width = 9,
-           box(
-             width = NULL, solidHeader = FALSE,
-             sunburstAtlasOutput("sunburst_plot")
-           ),
-           box(width = NULL, solidHeader = TRUE,
-               DT::DTOutput("click_data")
-           )#,
-    )
+ui <- page_sidebar(
+  title = "Sunburst plot",
+  sidebar = sidebar(
+    open = FALSE
+  ),
+
+  bslib::nav_panel(
+    "Plot",
+    sunburstUI("sunburst_plot")
   )
+
 )
 
-ui <- dashboardPage(
-  header,
-  dashboardSidebar(disable = TRUE),
-  body
-)
+# Server ------------------------------------------------------------------
 
-server <- function(input, output, session) {
-
-  output$sunburst_plot <- renderSunburstAtlas({
-    sunburstAtlas(chartData, design)
-  })
-
-  observeEvent(input$sunburst_plot_click_data, {
-    click_event <- req(input$sunburst_plot_click_data)
-
-    event_code <- as.integer(click_event$d$name)
-    children <- click_event$d$children
-    data <- click_event$data
-
-    event_code_table <- eventCodes %>% dplyr::filter(code == event_code)
-    print(event_code_table)
-    output$click_data <- DT::renderDT({
-      event_code_table
-    })
-  })
-
-  observeEvent(input$sunburst_plot_chart_colors, {
-    print(input$sunburst_plot_chart_colors)
-  })
-
-  observeEvent(input$sunburst_plot_chart_data_converted, {
-    chart_data <- req(input$sunburst_plot_chart_data_converted)
-    print(chart_data$eventCohorts)
-  })
-
+server <- function(input, output) {
+  sunburstServer("sunburst_plot", chartData, design)
 }
 
-shinyApp(ui = ui, server = server)
+
+# Shiny App ---------------------------------------------------------------
+
+shinyApp(ui, server)
