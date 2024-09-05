@@ -14,4 +14,8 @@ Imports:
     shinydashboard,
     pkgload,
     htmlwidgets,
-    jsonlite
+    jsonlite,
+    tidyr,
+    bslib,
+    glue
+RoxygenNote: 7.3.2
