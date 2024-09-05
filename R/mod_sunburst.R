@@ -108,9 +108,6 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
     pathway <- reactive(input$sunburst_plot_click_data$pathway)
 
     observeEvent(pathway(), {
-      # path <- pathway()[[4]]
-      # path <- pathway()[[1]]
-      # path$names
       btns_df <- req(pathway()) %>%
         lapply(function(path) {
           df <- path$names %>%
@@ -149,29 +146,6 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
       output$click_data <- DT::renderDT({
         event_code_table
       })
-
-      event_cohorts_x_color <- event_code_table %>%
-        dplyr::inner_join(event_cohorts(), by = c("name" = "name"), suffix = c("", ".y"))
-
-      buttons <- event_cohorts_x_color %>%
-        nrow() %>%
-        seq_len() %>%
-        lapply(function(rowid) {
-          x <-  event_cohorts_x_color %>% dplyr::slice(rowid)
-          customActionButton(session$ns(paste0("cohortBtn-", x$code)), x$name, x$color) %>%
-            as.character()
-        })
-
-
-      details <- dplyr::tibble(
-        Name = buttons
-      )
-      details$Remain = NA
-      details$Diff = NA
-
-      # output$selectedCohorts <- DT::renderDT(details, escape=FALSE, options = list(
-      #   dom = "t"
-      # ))
 
     })
 
