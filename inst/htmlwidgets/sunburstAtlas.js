@@ -20,6 +20,7 @@ HTMLWidgets.widget({
 
     var Sunburst = SunburstModule(d3, Chart);
 
+    var helpers = new Helpers(d3);
     console.log(">>>>> init ends");
     // TODO: define shared variables for this instance
 
@@ -38,32 +39,8 @@ HTMLWidgets.widget({
           var height = el.getBoundingClientRect().height - 70;
           var radius = Math.min(width, height) / 2;
           console.log(">>> width: " + width + ", height: ", + height)
-
         // -------
-        function click(d,i, data) {
-          console.log(">>> click event -- i: " + i)
-          console.log(">>> click event -- d: " + d)
 
-          var sequenceArray = d.ancestors().reverse();
-          sequenceArray.shift(); // remove root node from the array
-
-          dispatch_.call("click", sequenceArray.map(
-            function(d) {
-
-              Shiny.setInputValue(
-                elementId + "_click_data",
-                {
-                  d: d.data,
-                  i: i,
-                  data: data
-                },
-                sequenceArray,
-                {priority: "event"}
-              );
-              return d.data.name
-            }
-          ));
-        }
 /*
         function tooltipBuilder(d) {
 			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
@@ -121,10 +98,15 @@ HTMLWidgets.widget({
             function tooltip_builder(d) {
               tooltipBuilder(d, chartData, chartData.colors);
             };
+
+            function click_helper(d, i) {
+              helpers.click(d,i, chartData, chartData.colors, elementId)
+            };
+
             //console.log(">>> chartData: \n" + JSON.stringify(chartData));
             chartData.cohortPathways.forEach(pathwayData => {
               var options = { split: split, minRadians: 0, colors: chartData.colors,
-                onclick: click, tooltip: tooltip_builder
+                onclick: click_helper, tooltip: tooltip_builder
               };
 
               plot.render(pathwayData.pathway, target, width, height, options);
