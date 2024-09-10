@@ -20,11 +20,11 @@ dependencies:
     src: htmlwidgets
     script:
       - lodash.min.js
-  # - name: knockout
-  #   version: 3.5.1
-  #   src: htmlwidgets
-  #   script:
-  #     - knockout-3.5.1.js
+  - name: knockout
+    version: 3.5.1
+    src: htmlwidgets
+    script:
+      - knockout-3.5.1.js
 
   # - name: config2.js
   #   version: 0.0.1
@@ -66,5 +66,6 @@ dependencies:
       - sunburstModule.js
       - utilModule.js
       - helpers.js
+      - getPathwayGroupDatatable.js
       # - initModules.js
 

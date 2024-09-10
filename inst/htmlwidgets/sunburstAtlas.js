@@ -21,12 +21,58 @@ HTMLWidgets.widget({
     var Sunburst = SunburstModule(d3, Chart);
 
     var helpers = new Helpers(d3);
+
+    var initialized = false;
+
     console.log(">>>>> init ends");
     // TODO: define shared variables for this instance
 
     return {
 
+      getPathwayGroupDatatable: function(params) {
+        console.log(">>> getPathwayGroupDatatable method");
+        //getPathwayGroupDatatable(pathwayAnalysisDTO.pathwayGroups[0], 5)
+        var pathLength = params.pathLength;
+        debugger;
+
+        var pathwayGroup = getPathwayGroupDatatable(params.pathwayAnalysisDTO.pathwayGroups, params.pathLength);
+        Shiny.setInputValue(
+          elementId + "_pathway_group_datatable",
+          pathwayGroup,
+          {
+            priority: "event"
+          }
+        );
+
+      },
+
       renderValue: function(x) {
+        if (!initialized) {
+          initialized = true;
+          document.getElementById(elementId).widget = this;
+
+          if (HTMLWidgets.shinyMode) {
+            var fxns = ['getPathwayGroupDatatable'];
+
+            var addShinyHandler = function(fxn) {
+              return function() {
+                Shiny.addCustomMessageHandler(
+                  "sunburstAtlas:" + fxn, function(message) {
+                    var el = document.getElementById(message.id);
+                    if (el) {
+                      debugger;
+                      el.widget[fxn](message);
+                    }
+                  }
+                );
+              }
+            };
+
+            for (var i = 0; i < fxns.length; i++) {
+              addShinyHandler(fxns[i])();
+            }
+          }
+        }
         //var chartData = x.data;
         var pathwayAnalysisDTO = x.data;
         var design = x.design;
@@ -34,91 +80,108 @@ HTMLWidgets.widget({
         console.log(">>> ID: " + elementId);
 
         // Dimensions of sunburst
-          // https://github.com/timelyportfolio/sunburstR/blob/master/inst/htmlwidgets/sunburst.js#L35C61-L35C67
-          var width = el.getBoundingClientRect().width;
-          var height = el.getBoundingClientRect().height - 70;
-          var radius = Math.min(width, height) / 2;
-          console.log(">>> width: " + width + ", height: ", + height)
+        // https://github.com/timelyportfolio/sunburstR/blob/master/inst/htmlwidgets/sunburst.js#L35C61-L35C67
+        var width = el.getBoundingClientRect().width;
+        var height = el.getBoundingClientRect().height - 70;
+        var radius = Math.min(width, height) / 2;
+        console.log(">>> width: " + width + ", height: ", +height)
         // -------
 
-/*
-        function tooltipBuilder(d) {
-			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
-			    const stepBuilder = (step) => `<div class="${this.classes('tip-step')}">${step.names.map(n => nameBuilder(n.name, n.color)).join("")}</div>`;
+        /*
+                function tooltipBuilder(d) {
+        			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
+        			    const stepBuilder = (step) => `<div class="${this.classes('tip-step')}">${step.names.map(n => nameBuilder(n.name, n.color)).join("")}</div>`;
 
-			    const path = this.getPathToNode(d);
-			    return `<div class="${this.classes('tip-container')}">${path.map(s => stepBuilder(s)).join("")}</div>`;
-		   }
-*/
+        			    const path = this.getPathToNode(d);
+        			    return `<div class="${this.classes('tip-container')}">${path.map(s => stepBuilder(s)).join("")}</div>`;
+        		   }
+        */
         // -----------
 
-          var plot = new Sunburst();
-          var resultDataConverter = new ResultDataConverter();
-          var target = document.getElementById(elementId);
+        var plot = new Sunburst();
+        var resultDataConverter = new ResultDataConverter();
+        var target = document.getElementById(elementId);
 
-          function split(node) {
+        function split(node) {
 
-            if (isNaN(node.data.name)) {
-              return [node];
-            };
+          if (isNaN(node.data.name)) {
+            return [node];
+          };
 
-            let splitNodes = [...Number.parseInt(node.data.name).toString(2)].reverse().reduce((result, bit, i) => {
-              if (bit == "1") {
-                let nodeClone = Object.assign({}, node);
-                nodeClone.data = { name: (1 << i).toString() };
-                result.push(nodeClone);
-              }
-              return result;
-            }, [])
-
-            const bandWidth = (node.y1 - node.y0) / splitNodes.length;
-
-            return splitNodes.map((node, i) => {
-              node.y0 = node.y0 + (i * bandWidth);
-              node.y1 = node.y0 + bandWidth;
-              return node;
-            })
-
-          }
-          function refreshPlot() {
-            //pathwayAnalysisDTO = JSON.parse(document.querySelector("#chartData").value);
-            //design = JSON.parse(document.querySelector("#design").value);
-
-            chartData = resultDataConverter.convert(pathwayAnalysisDTO, design);
-            chartData.eventCohorts.forEach(event => {
-              event.color = chartData.colors(event.code);
-            });
-
-            Shiny.setInputValue(
-                elementId + "_chart_data_converted",
-                chartData,
-                {priority: "event"}
-            );
-
-            function tooltip_builder(d) {
-              tooltipBuilder(d, chartData, chartData.colors);
-            };
-
-            function click_helper(d, i) {
-              helpers.click(d,i, chartData, chartData.colors, elementId)
-            };
-
-            //console.log(">>> chartData: \n" + JSON.stringify(chartData));
-            chartData.cohortPathways.forEach(pathwayData => {
-              var options = { split: split, minRadians: 0, colors: chartData.colors,
-                onclick: click_helper, tooltip: tooltip_builder
+          let splitNodes = [...Number.parseInt(node.data.name).toString(2)].reverse().reduce((result, bit, i) => {
+            if (bit == "1") {
+              let nodeClone = Object.assign({}, node);
+              nodeClone.data = {
+                name: (1 << i).toString()
               };
+              result.push(nodeClone);
+            }
+            return result;
+          }, [])
 
-              plot.render(pathwayData.pathway, target, width, height, options);
-            });
-          }
+          const bandWidth = (node.y1 - node.y0) / splitNodes.length;
 
-          /*
-          document.querySelector("#reload").addEventListener("click", function () {
-            refreshPlot();
+          return splitNodes.map((node, i) => {
+            node.y0 = node.y0 + (i * bandWidth);
+            node.y1 = node.y0 + bandWidth;
+            return node;
+          })
+
+        }
+
+        function refreshPlot() {
+          //pathwayAnalysisDTO = JSON.parse(document.querySelector("#chartData").value);
+          //design = JSON.parse(document.querySelector("#design").value);
+
+          chartData = resultDataConverter.convert(pathwayAnalysisDTO, design);
+          chartData.eventCohorts.forEach(event => {
+            event.color = chartData.colors(event.code);
           });
-          */
+
+          Shiny.setInputValue(
+            elementId + "_chart_data_converted",
+            chartData,
+            {
+              priority: "event"
+            }
+          );
+
+          function tooltip_builder(d) {
+            tooltipBuilder(d, chartData, chartData.colors);
+          };
+
+          function click_helper(d, i) {
+
+            /*
+            debugger;
+
+            var df = getPathwayGroupDatatable(d, 5)
+
+            var report_data = prepareReportData(design, pathwayAnalysisDTO, targetCohortId = 14);
+            */
+            helpers.click(d, i, chartData, chartData.colors, elementId)
+          };
+
+          //console.log(">>> chartData: \n" + JSON.stringify(chartData));
+          chartData.cohortPathways.forEach(pathwayData => {
+            var options = {
+              split: split,
+              minRadians: 0,
+              colors: chartData.colors,
+              onclick: click_helper,
+              tooltip: tooltip_builder
+            };
+
+            plot.render(pathwayData.pathway, target, width, height, options);
+          });
+        }
+
+        /*
+        document.querySelector("#reload").addEventListener("click", function () {
           refreshPlot();
+        });
+        */
+        refreshPlot();
 
         //});
 

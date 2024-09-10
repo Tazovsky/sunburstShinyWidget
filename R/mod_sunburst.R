@@ -55,7 +55,7 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
   moduleServer(id, function(input, output, session) {
-
+    ns <- session$ns
 
     output$sunburst_plot <- renderSunburstAtlas({
       sunburstAtlas(chartData, design)
@@ -111,6 +111,12 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
     pathway <- reactive(input$sunburst_plot_click_data$pathway)
 
     observeEvent(pathway(), {
+
+      req(pathway())
+      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, 5)
+    })
+
+    observeEvent(pathway(), {
       btns_df <- req(pathway()) %>%
         lapply(function(path) {
           df <- path$names %>%
@@ -156,12 +162,18 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
     })
 
     observeEvent(input$sunburst_plot_chart_colors, {
-      print(input$sunburst_plot_chart_colors)
+      print("input$sunburst_plot_chart_colors")
     })
 
     observeEvent(input$sunburst_plot_chart_data_converted, {
       chart_data <- req(input$sunburst_plot_chart_data_converted)
-      print(chart_data$eventCohorts)
+      print("chart_data$eventCohorts")
+    })
+
+
+    observeEvent(input$sunburst_plot_pathway_group_datatable, {
+      pathway_group <- req(input$sunburst_plot_pathway_group_datatable)
+      print("input$sunburst_plot_pathway_group_datatable")
     })
 
 
