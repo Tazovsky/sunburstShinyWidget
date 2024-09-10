@@ -50,7 +50,7 @@ sunburstUI <- function(id) {
 #' @return
 #' @export
 #' @rdname sunburst
-sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
+sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
 
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
@@ -126,7 +126,7 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "12px") {
 
 
       output$selectedCohorts <- DT::renderDT(btns_df,
-                                             rownames = FALSE,
+                                             rownames = TRUE,
                                              # colnames = TRUE,
                                              escape = FALSE,
                                              options = list(dom = "t"))
