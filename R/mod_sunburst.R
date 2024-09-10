@@ -124,6 +124,8 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
         }) %>%
         dplyr::bind_rows()
 
+      btns_df <- btns_df %>%
+        dplyr::mutate(Count = sprintf("%s (%s%%)", Count, round(Count / sum(Count) * 100, 2)))
 
       output$selectedCohorts <- DT::renderDT(btns_df,
                                              rownames = TRUE,
