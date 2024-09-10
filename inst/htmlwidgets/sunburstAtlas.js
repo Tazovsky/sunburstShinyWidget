@@ -33,12 +33,16 @@ HTMLWidgets.widget({
         console.log(">>> getPathwayGroupDatatable method");
         //getPathwayGroupDatatable(pathwayAnalysisDTO.pathwayGroups[0], 5)
         var pathLength = params.pathLength;
-        debugger;
+        var pathwayGroups = params.pathwayAnalysisDTO.pathwayGroups;
+        
+        p_groups = Object.entries(pathwayGroups).reduce((acc, [key, value]) => {
+          acc[key] = getPathwayGroupDatatable(value, params.pathLength);
+          return acc;
+        }, {});
 
-        var pathwayGroup = getPathwayGroupDatatable(params.pathwayAnalysisDTO.pathwayGroups, params.pathLength);
         Shiny.setInputValue(
           elementId + "_pathway_group_datatable",
-          pathwayGroup,
+          p_groups,
           {
             priority: "event"
           }
@@ -60,7 +64,6 @@ HTMLWidgets.widget({
                   "sunburstAtlas:" + fxn, function(message) {
                     var el = document.getElementById(message.id);
                     if (el) {
-                      debugger;
                       el.widget[fxn](message);
                     }
                   }
