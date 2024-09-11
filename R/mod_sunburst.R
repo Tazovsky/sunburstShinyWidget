@@ -9,7 +9,7 @@
 sunburstUI <- function(id) {
   ns <- NS(id)
   bslib::layout_columns(
-    col_widths = c(3, 6, 3, 12),
+    col_widths = c(2, 7, 3, 12),
     bslib::card(
       full_screen = FALSE,
       bslib::card_header("Legend"),
@@ -21,7 +21,7 @@ sunburstUI <- function(id) {
       DT::DTOutput(ns("legend_event_cohorts"))
     ),
     bslib::card(
-      full_screen = FALSE,
+      full_screen = TRUE,
       bslib::card_header("Sunburst plot"),
       # plotly::plotlyOutput(ns("plot"))
       sunburstAtlasOutput(ns("sunburst_plot"))
