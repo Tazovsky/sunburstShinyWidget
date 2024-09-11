@@ -17,5 +17,6 @@ Imports:
     jsonlite,
     tidyr,
     bslib,
-    glue
+    glue,
+    DT
 RoxygenNote: 7.3.2

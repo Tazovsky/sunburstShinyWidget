@@ -111,12 +111,6 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
     pathway <- reactive(input$sunburst_plot_click_data$pathway)
 
     observeEvent(pathway(), {
-
-      req(pathway())
-      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, 5)
-    })
-
-    observeEvent(pathway(), {
       btns_df <- req(pathway()) %>%
         lapply(function(path) {
           df <- path$names %>%
@@ -141,6 +135,8 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
 
     })
 
+
+
     observeEvent(input$sunburst_plot_click_data, {
       click_event <- req(input$sunburst_plot_click_data)
       event_code <- as.integer(click_event$d$name)
@@ -155,9 +151,9 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
 
       req(nrow(event_code_table) >= 1)
 
-      output$click_data <- DT::renderDT({
-        event_code_table
-      })
+      # output$click_data <- DT::renderDT({
+      #   event_code_table
+      # })
 
     })
 
@@ -167,13 +163,53 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
 
     observeEvent(input$sunburst_plot_chart_data_converted, {
       chart_data <- req(input$sunburst_plot_chart_data_converted)
+      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, 5)
       print("chart_data$eventCohorts")
     })
 
 
-    observeEvent(input$sunburst_plot_pathway_group_datatable, {
-      pathway_group <- req(input$sunburst_plot_pathway_group_datatable)
+    event_codes_and_btns <- eventReactive(input$sunburst_plot_chart_data_converted$eventCodes, {
+      ev_codes <- req(input$sunburst_plot_chart_data_converted$eventCodes) %>%
+        dplyr::bind_rows()
+
+      ev_codes  %>%
+        rowwise() %>%
+        mutate(buttons = match_color(name, ev_codes))
+    })
+
+    observeEvent(list(input$sunburst_plot_pathway_group_datatable, event_codes_and_btns()), {
+      pathway_group_dt <- req(input$sunburst_plot_pathway_group_datatable)
       print("input$sunburst_plot_pathway_group_datatable")
+      event_codes <- req(event_codes_and_btns())
+
+
+      pg <- pathway_group_dt[[1]]
+
+      if (length(pathway_group_dt) > 1) {
+        stop("pathway_group_dt length is greater than 1")
+      }
+
+      df <- pg$data %>%
+        dplyr::bind_rows() %>%
+        dplyr::mutate(path2 = strsplit(path, "-")) %>%
+        rowwise() %>%
+        dplyr::mutate(Step = list(purrr::map(path2, function(pth) {
+          event_codes %>%
+            dplyr::filter(as.character(code) == as.character(pth)) %>%
+            dplyr::pull(buttons)
+
+        }))) %>%
+        tidyr::unnest_wider(Step, names_sep = " ") %>%
+        tidyr::unnest_wider(path2, names_sep = "") %>%
+        dplyr::arrange(dplyr::across(dplyr::matches("^path2[0-9]+")))
+
+      output$click_data <- DT::renderDT(
+        df %>% dplyr::select(dplyr::starts_with("Step"), personCount),
+        rownames = FALSE,
+        # colnames = NULL,
+        escape = FALSE#,
+        # options = list(dom = "t")
+      )
     })
 
 
@@ -192,4 +228,37 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
 #'
 customActionButton <- function(inputId, label, color, font_size = "10px") {
   shiny::actionButton(inputId, shiny::tags$strong(label), style = glue::glue("background-color: {color}; font-size: {font_size};'"))
+}
+
+
+#' match_color
+#'
+#' @param x
+#' @param eventCodes
+#'
+#' @return data.frame
+#' @export
+#'
+match_color <- function(x, eventCodes) {
+  event_names <- x %>%
+    strsplit(",") %>%
+    unlist()
+
+  colors <- event_names %>%
+    purrr::map(function(nm) {
+      eventCodes %>%
+        filter(name == nm) %>%
+        pull(color)
+    }) %>%
+    unlist()
+
+  event_names %>%
+    length() %>%
+    seq_len() %>%
+    lapply(function(i) {
+      customActionButton(as.character(as.integer(Sys.time())), event_names[i], colors[i], font_size = "10px") %>% as.character()
+    }) %>%
+    unlist() %>%
+    paste0(collapse = ",")
+
 }
