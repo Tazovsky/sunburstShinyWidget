@@ -2,6 +2,7 @@
 
 export(customActionButton)
 export(getPathwayGroupDatatable)
+export(match_color)
 export(renderSunburstAtlas)
 export(sunburstAtlas)
 export(sunburstAtlasOutput)
