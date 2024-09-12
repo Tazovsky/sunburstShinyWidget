@@ -26,7 +26,6 @@ ui <- page_sidebar(
       shiny.info::version(as.character(packageVersion("sunburstAtlas")), position = "bottom right"),
       sunburstUI("sunburst_plot")
     )
-
   )
 
 )

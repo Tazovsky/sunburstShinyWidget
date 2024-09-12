@@ -50,7 +50,7 @@ sunburstUI <- function(id) {
 #' @return
 #' @export
 #' @rdname sunburst
-sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
+sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_colors_in_table = FALSE) {
 
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
@@ -182,26 +182,40 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px") {
       print("input$sunburst_plot_pathway_group_datatable")
       event_codes <- req(event_codes_and_btns())
 
-
-      pg <- pathway_group_dt[[1]]
-
       if (length(pathway_group_dt) > 1) {
         stop("pathway_group_dt length is greater than 1")
       }
 
+      pg <- pathway_group_dt[[1]]
+
       df <- pg$data %>%
         dplyr::bind_rows() %>%
         dplyr::mutate(path2 = strsplit(path, "-")) %>%
-        rowwise() %>%
-        dplyr::mutate(Step = list(purrr::map(path2, function(pth) {
-          event_codes %>%
-            dplyr::filter(as.character(code) == as.character(pth)) %>%
-            dplyr::pull(buttons)
+        dplyr::rowwise()
 
-        }))) %>%
-        tidyr::unnest_wider(Step, names_sep = " ") %>%
-        tidyr::unnest_wider(path2, names_sep = "") %>%
-        dplyr::arrange(dplyr::across(dplyr::matches("^path2[0-9]+")))
+      if (show_colors_in_table) {
+        df <- df %>%
+          dplyr::mutate(Step = list(purrr::map(path2, function(pth) {
+            event_codes %>%
+              dplyr::filter(as.character(code) == as.character(pth)) %>%
+              dplyr::pull(buttons)
+
+          }))) %>%
+          tidyr::unnest_wider(Step, names_sep = " ") %>%
+          tidyr::unnest_wider(path2, names_sep = "") %>%
+          dplyr::arrange(dplyr::across(dplyr::matches("^path2[0-9]+")))
+      } else {
+        df <- df %>%
+          dplyr::mutate(Step = list(purrr::map(path2, function(pth) {
+            event_codes %>%
+              dplyr::filter(as.character(code) == as.character(pth)) %>%
+              dplyr::pull(name)
+          }))) %>%
+          tidyr::unnest_wider(Step, names_sep = " ") %>%
+          tidyr::unnest_wider(path2, names_sep = "") %>%
+          dplyr::arrange(dplyr::across(dplyr::matches("^path2[0-9]+")))
+      }
+
 
       output$click_data <- DT::renderDT(
         df %>% dplyr::select(dplyr::starts_with("Step"), personCount),
@@ -247,8 +261,8 @@ match_color <- function(x, eventCodes) {
   colors <- event_names %>%
     purrr::map(function(nm) {
       eventCodes %>%
-        filter(name == nm) %>%
-        pull(color)
+        dplyr::filter(name == nm) %>%
+        dplyr::pull(color)
     }) %>%
     unlist()
 
