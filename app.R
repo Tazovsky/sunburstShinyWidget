@@ -22,7 +22,11 @@ ui <- page_sidebar(
 
   bslib::nav_panel(
     "Plot",
-    sunburstUI("sunburst_plot")
+    tagList(
+      shiny.info::version(as.character(packageVersion("sunburstAtlas")), position = "bottom right"),
+      sunburstUI("sunburst_plot")
+    )
+
   )
 
 )
