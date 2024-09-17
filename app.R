@@ -1,5 +1,3 @@
-# https://shiny.posit.co/blog/posts/bslib-dashboards/#hello-dashboards
-
 library(shiny)
 library(bslib)
 library(dplyr)
@@ -23,7 +21,7 @@ ui <- page_sidebar(
   bslib::nav_panel(
     "Plot",
     tagList(
-      shiny.info::version(as.character(packageVersion("sunburstAtlas")), position = "bottom right"),
+      shiny.info::version(as.character(packageVersion("sunburstShinyWidget")), position = "bottom right"),
       sunburstUI("sunburst_plot")
     )
   )

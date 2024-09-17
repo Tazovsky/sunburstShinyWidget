@@ -5,7 +5,7 @@
 #' @import htmlwidgets
 #'
 #' @export
-sunburstAtlas <- function(data, design, width = NULL, height = NULL, elementId = NULL) {
+sunburstShinyWidget <- function(data, design, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
   x = list(
@@ -15,11 +15,11 @@ sunburstAtlas <- function(data, design, width = NULL, height = NULL, elementId =
 
   # create widget
   widget <- htmlwidgets::createWidget(
-    name = 'sunburstAtlas',
+    name = 'sunburstShinyWidget',
     x,
     width = width,
     height = height,
-    package = 'sunburstAtlas',
+    package = 'sunburstShinyWidget',
     elementId = elementId
   )
 
@@ -41,30 +41,30 @@ sunburstAtlas <- function(data, design, width = NULL, height = NULL, elementId =
   return(widget)
 }
 
-#' Shiny bindings for sunburstAtlas
+#' Shiny bindings for sunburstShinyWidget
 #'
-#' Output and render functions for using sunburstAtlas within Shiny
+#' Output and render functions for using sunburstShinyWidget within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a sunburstAtlas
+#' @param expr An expression that generates a sunburstShinyWidget
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name sunburstAtlas-shiny
+#' @name sunburstShinyWidget-shiny
 #'
 #' @export
-sunburstAtlasOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'sunburstAtlas', width, height, package = 'sunburstAtlas')
+sunburstShinyWidgetOutput <- function(outputId, width = '100%', height = '400px'){
+  htmlwidgets::shinyWidgetOutput(outputId, 'sunburstShinyWidget', width, height, package = 'sunburstShinyWidget')
 }
 
-#' @rdname sunburstAtlas-shiny
+#' @rdname sunburstShinyWidget-shiny
 #' @export
-renderSunburstAtlas <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderSunburstShinyWidget <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, sunburstAtlasOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, sunburstShinyWidgetOutput, env, quoted = TRUE)
 }

@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'sunburstAtlas',
+  name: 'sunburstShinyWidget',
 
   type: 'output',
 
@@ -60,7 +60,7 @@ HTMLWidgets.widget({
             var addShinyHandler = function(fxn) {
               return function() {
                 Shiny.addCustomMessageHandler(
-                  "sunburstAtlas:" + fxn, function(message) {
+                  "sunburstShinyWidget:" + fxn, function(message) {
                     var el = document.getElementById(message.id);
                     if (el) {
                       el.widget[fxn](message);

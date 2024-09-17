@@ -7,7 +7,7 @@
 callJS <- function() {
   message <- Filter(function(x) !is.symbol(x), as.list(parent.frame(1)))
   session <- shiny::getDefaultReactiveDomain()
-  method <- paste0("sunburstAtlas:", message$method)
+  method <- paste0("sunburstShinyWidget:", message$method)
   session$sendCustomMessage(method, message)
   return(message$id)
 }
