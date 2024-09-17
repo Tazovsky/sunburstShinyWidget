@@ -4,8 +4,7 @@ Title: Sunburst HTML Widget
 Version: 0.4.0
 Authors@R: 
     person("Kamil", "Foltyński", , "kamil@foltynski.com", role = c("aut", "cre"))
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Ported Sunburst plot based on d3.js library to HTML Shiny Widget
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
