@@ -1,5 +1,3 @@
-# https://shiny.posit.co/blog/posts/bslib-dashboards/#hello-dashboards
-
 library(shiny)
 library(bslib)
 library(dplyr)
