@@ -7,7 +7,7 @@ HTMLWidgets.widget({
   factory: function(el, width, height) {
     var elementId = el.id;
     document.getElementById(elementId).widget = this;
-    console.log(">>>>> init starts");
+    console.log("init starts");
     var lodash = _;
     var d3tip = d3.tip;
 
@@ -24,17 +24,16 @@ HTMLWidgets.widget({
 
     var initialized = false;
 
-    console.log(">>>>> init ends");
-    // TODO: define shared variables for this instance
+    console.log("init ends");
 
     return {
 
       getPathwayGroupDatatable: function(params) {
-        console.log(">>> getPathwayGroupDatatable method");
-        //getPathwayGroupDatatable(pathwayAnalysisDTO.pathwayGroups[0], 5)
+        console.log("method: getPathwayGroupDatatable");
+
         var pathLength = params.pathLength;
         var pathwayGroups = params.pathwayAnalysisDTO.pathwayGroups;
-        
+
         p_groups = Object.entries(pathwayGroups).reduce((acc, [key, value]) => {
           acc[key] = getPathwayGroupDatatable(value, params.pathLength);
           return acc;
@@ -76,7 +75,7 @@ HTMLWidgets.widget({
             }
           }
         }
-        //var chartData = x.data;
+
         var pathwayAnalysisDTO = x.data;
         var design = x.design;
         var dispatch_ = d3.dispatch("mouseover", "click");
@@ -88,18 +87,6 @@ HTMLWidgets.widget({
         var height = el.getBoundingClientRect().height - 70;
         var radius = Math.min(width, height) / 2;
         console.log(">>> width: " + width + ", height: ", +height)
-        // -------
-
-        /*
-                function tooltipBuilder(d) {
-        			    const nameBuilder = (name, color) => `<span class="${this.classes('tip-name')}" style="background-color:${color}; color: ${name == 'end' ? 'black' : 'white'}">${name}</span>`;
-        			    const stepBuilder = (step) => `<div class="${this.classes('tip-step')}">${step.names.map(n => nameBuilder(n.name, n.color)).join("")}</div>`;
-
-        			    const path = this.getPathToNode(d);
-        			    return `<div class="${this.classes('tip-container')}">${path.map(s => stepBuilder(s)).join("")}</div>`;
-        		   }
-        */
-        // -----------
 
         var plot = new Sunburst();
         var resultDataConverter = new ResultDataConverter();
@@ -133,8 +120,6 @@ HTMLWidgets.widget({
         }
 
         function refreshPlot() {
-          //pathwayAnalysisDTO = JSON.parse(document.querySelector("#chartData").value);
-          //design = JSON.parse(document.querySelector("#design").value);
 
           chartData = resultDataConverter.convert(pathwayAnalysisDTO, design);
           chartData.eventCohorts.forEach(event => {
@@ -149,44 +134,29 @@ HTMLWidgets.widget({
             }
           );
 
-          function tooltip_builder(d) {
-            tooltipBuilder(d, chartData, chartData.colors);
-          };
-
           function click_helper(d, i) {
-
-            /*
-            debugger;
-
-            var df = getPathwayGroupDatatable(d, 5)
-
-            var report_data = prepareReportData(design, pathwayAnalysisDTO, targetCohortId = 14);
-            */
             helpers.click(d, i, chartData, chartData.colors, elementId)
           };
 
-          //console.log(">>> chartData: \n" + JSON.stringify(chartData));
+          function tooltip_helper(d) {
+            return tooltipBuilder(d, chartData, chartData.colors);
+          };
+
           chartData.cohortPathways.forEach(pathwayData => {
             var options = {
               split: split,
               minRadians: 0,
               colors: chartData.colors,
               onclick: click_helper,
-              tooltip: tooltip_builder
+              tooltip: tooltip_helper
             };
 
             plot.render(pathwayData.pathway, target, width, height, options);
+
           });
         }
 
-        /*
-        document.querySelector("#reload").addEventListener("click", function () {
-          refreshPlot();
-        });
-        */
         refreshPlot();
-
-        //});
 
       },
 

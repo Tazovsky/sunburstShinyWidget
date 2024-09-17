@@ -1,0 +1,3156 @@
+{
+  "eventCodes": [
+    {
+      "code": 3,
+      "name": "Metformin-txp,Glipizide-txp",
+      "isCombo": true
+    },
+    {
+      "code": 4,
+      "name": "Simvastatin-txp",
+      "isCombo": false
+    },
+    {
+      "code": 2,
+      "name": "Metformin-txp",
+      "isCombo": false
+    },
+    {
+      "code": 5,
+      "name": "Simvastatin-txp,Glipizide-txp",
+      "isCombo": true
+    },
+    {
+      "code": 6,
+      "name": "Simvastatin-txp,Metformin-txp",
+      "isCombo": true
+    },
+    {
+      "code": 7,
+      "name": "Simvastatin-txp,Metformin-txp,Glipizide-txp",
+      "isCombo": true
+    },
+    {
+      "code": 1,
+      "name": "Glipizide-txp",
+      "isCombo": false
+    }
+  ],
+  "pathwayGroups": [
+    {
+      "targetCohortId": 14,
+      "targetCohortCount": 79615,
+      "totalPathwaysCount": 41230,
+      "pathways": [
+        {
+          "path": "6-2-1-3-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-5-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-3-4-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-5-1-3",
+          "personCount": 16
+        },
+        {
+          "path": "2-4-5-1-6",
+          "personCount": 23
+        },
+        {
+          "path": "1-2-6-3",
+          "personCount": 2
+        },
+        {
+          "path": "1-2-6-5",
+          "personCount": 2
+        },
+        {
+          "path": "1-2-6-4",
+          "personCount": 142
+        },
+        {
+          "path": "1-3-4-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-3-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-2-6",
+          "personCount": 42
+        },
+        {
+          "path": "4-7-6-1-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-2",
+          "personCount": 10
+        },
+        {
+          "path": "6-1-4-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-2-3",
+          "personCount": 20
+        },
+        {
+          "path": "1",
+          "personCount": 2007
+        },
+        {
+          "path": "6-2-1",
+          "personCount": 4
+        },
+        {
+          "path": "2",
+          "personCount": 4726
+        },
+        {
+          "path": "3",
+          "personCount": 68
+        },
+        {
+          "path": "4",
+          "personCount": 10279
+        },
+        {
+          "path": "5",
+          "personCount": 8
+        },
+        {
+          "path": "6",
+          "personCount": 10
+        },
+        {
+          "path": "2-1-5-6-4",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-3-1",
+          "personCount": 143
+        },
+        {
+          "path": "5-4-1",
+          "personCount": 2
+        },
+        {
+          "path": "5-4-2",
+          "personCount": 12
+        },
+        {
+          "path": "4-2-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-7-6-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-2-6-3-1",
+          "personCount": 12
+        },
+        {
+          "path": "4-2-3-7",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-3-6",
+          "personCount": 10
+        },
+        {
+          "path": "2-1-6-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "6-2-4",
+          "personCount": 15
+        },
+        {
+          "path": "4-6-1-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-6-4-3",
+          "personCount": 5
+        },
+        {
+          "path": "4-6-1-2-3",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-6-4-5",
+          "personCount": 5
+        },
+        {
+          "path": "4-3-1-2",
+          "personCount": 6
+        },
+        {
+          "path": "4-6-1-2-5",
+          "personCount": 2
+        },
+        {
+          "path": "6-2-4-1",
+          "personCount": 4
+        },
+        {
+          "path": "6-3-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-6-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "6-1",
+          "personCount": 2
+        },
+        {
+          "path": "6-2-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-6-3-5",
+          "personCount": 4
+        },
+        {
+          "path": "6-2",
+          "personCount": 17
+        },
+        {
+          "path": "6-4",
+          "personCount": 20
+        },
+        {
+          "path": "2-6-7-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-6-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-5-1-3-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-5",
+          "personCount": 7
+        },
+        {
+          "path": "2-4-3-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-6",
+          "personCount": 73
+        },
+        {
+          "path": "1-4-2-3",
+          "personCount": 52
+        },
+        {
+          "path": "1-2-6-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-5-2",
+          "personCount": 47
+        },
+        {
+          "path": "1-2-6-3-4",
+          "personCount": 4
+        },
+        {
+          "path": "1-2-6-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-5-6-2",
+          "personCount": 4
+        },
+        {
+          "path": "4-1-5-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-3-7-6",
+          "personCount": 4
+        },
+        {
+          "path": "2-7-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-1-5",
+          "personCount": 25
+        },
+        {
+          "path": "2-4-6-1-3",
+          "personCount": 20
+        },
+        {
+          "path": "1-4-6-2-5",
+          "personCount": 9
+        },
+        {
+          "path": "1-4-6-2-3",
+          "personCount": 14
+        },
+        {
+          "path": "1-5-3-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-5-3-6",
+          "personCount": 3
+        },
+        {
+          "path": "1-3-6-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-3-7-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-5-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-3-7-5",
+          "personCount": 8
+        },
+        {
+          "path": "4-2-3-7-6",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-6-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-3-1",
+          "personCount": 2
+        },
+        {
+          "path": "5-7-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "5-2-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-1-3",
+          "personCount": 61
+        },
+        {
+          "path": "5-2-4",
+          "personCount": 4
+        },
+        {
+          "path": "4-2-1-7",
+          "personCount": 1
+        },
+        {
+          "path": "6-1-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-1-6",
+          "personCount": 51
+        },
+        {
+          "path": "4-2-6-1-5",
+          "personCount": 19
+        },
+        {
+          "path": "4-2-1-5",
+          "personCount": 59
+        },
+        {
+          "path": "4-2-6-1-3",
+          "personCount": 13
+        },
+        {
+          "path": "3-2-6-4-1",
+          "personCount": 6
+        },
+        {
+          "path": "3-2-6-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1",
+          "personCount": 1284
+        },
+        {
+          "path": "4-2",
+          "personCount": 3075
+        },
+        {
+          "path": "4-3",
+          "personCount": 64
+        },
+        {
+          "path": "1-2-3-7-6",
+          "personCount": 5
+        },
+        {
+          "path": "4-5",
+          "personCount": 107
+        },
+        {
+          "path": "1-2-3-7-5",
+          "personCount": 4
+        },
+        {
+          "path": "4-6",
+          "personCount": 224
+        },
+        {
+          "path": "1-2-3-7-4",
+          "personCount": 3
+        },
+        {
+          "path": "4-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-3-7-5-4",
+          "personCount": 5
+        },
+        {
+          "path": "1-2-4-5-3",
+          "personCount": 5
+        },
+        {
+          "path": "4-5-6-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-4-5-7",
+          "personCount": 6
+        },
+        {
+          "path": "1-2-4-5-6",
+          "personCount": 7
+        },
+        {
+          "path": "4-1-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-6-2-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-1-3-2",
+          "personCount": 113
+        },
+        {
+          "path": "2-3-7-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-2-4",
+          "personCount": 10
+        },
+        {
+          "path": "3-4-5-1",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-5-7-6",
+          "personCount": 3
+        },
+        {
+          "path": "1-5-4-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-7-3",
+          "personCount": 4
+        },
+        {
+          "path": "1-6-2-4-5",
+          "personCount": 2
+        },
+        {
+          "path": "7-4-1-5-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-6-2",
+          "personCount": 33
+        },
+        {
+          "path": "2-4-7-3",
+          "personCount": 3
+        },
+        {
+          "path": "4-1-7-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "6-2-4-1-5",
+          "personCount": 3
+        },
+        {
+          "path": "1-5-6-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-7-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-5-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-5-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "6-1-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-1-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-6-2-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-1",
+          "personCount": 911
+        },
+        {
+          "path": "1-2-3-5-4",
+          "personCount": 12
+        },
+        {
+          "path": "2-3",
+          "personCount": 86
+        },
+        {
+          "path": "2-4",
+          "personCount": 2816
+        },
+        {
+          "path": "4-2-6-7-3",
+          "personCount": 12
+        },
+        {
+          "path": "2-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-6",
+          "personCount": 90
+        },
+        {
+          "path": "4-2-6-7-1",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-3-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-3-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-6-7-5",
+          "personCount": 5
+        },
+        {
+          "path": "7-4-2",
+          "personCount": 4
+        },
+        {
+          "path": "4-6-7-3-2",
+          "personCount": 5
+        },
+        {
+          "path": "4-6-7-3-1",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-2-7-6",
+          "personCount": 3
+        },
+        {
+          "path": "1-4-6-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-6-2",
+          "personCount": 13
+        },
+        {
+          "path": "1-3-2-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-2-7-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-3-4",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-4-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-3-1",
+          "personCount": 5
+        },
+        {
+          "path": "1-4-6-2",
+          "personCount": 129
+        },
+        {
+          "path": "1-4-3-6-2",
+          "personCount": 2
+        },
+        {
+          "path": "1-2-4-3-6",
+          "personCount": 3
+        },
+        {
+          "path": "2-3-1-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-1-6-4",
+          "personCount": 17
+        },
+        {
+          "path": "1-5-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-5-2-6",
+          "personCount": 9
+        },
+        {
+          "path": "1-5-4-6",
+          "personCount": 13
+        },
+        {
+          "path": "1-5-2-4-3",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-2-4-6",
+          "personCount": 5
+        },
+        {
+          "path": "1-4-5-2-3",
+          "personCount": 3
+        },
+        {
+          "path": "3-5-1-4-6",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-3",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-3-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-4-2",
+          "personCount": 111
+        },
+        {
+          "path": "5-1-4-6-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2",
+          "personCount": 630
+        },
+        {
+          "path": "4-6-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-1",
+          "personCount": 40
+        },
+        {
+          "path": "4-6-7",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-5",
+          "personCount": 4
+        },
+        {
+          "path": "1-4-2-6-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-4-1-5-3",
+          "personCount": 8
+        },
+        {
+          "path": "4-2-6-5-1",
+          "personCount": 28
+        },
+        {
+          "path": "2-4-1-5-6",
+          "personCount": 9
+        },
+        {
+          "path": "2-4-1-5-7",
+          "personCount": 3
+        },
+        {
+          "path": "6-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "6-4-2",
+          "personCount": 16
+        },
+        {
+          "path": "1-6-4-2",
+          "personCount": 7
+        },
+        {
+          "path": "6-4-1",
+          "personCount": 4
+        },
+        {
+          "path": "6-7-5-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-7-3-1",
+          "personCount": 2
+        },
+        {
+          "path": "6-7-5-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-6-5",
+          "personCount": 15
+        },
+        {
+          "path": "1-4-2-6-3",
+          "personCount": 8
+        },
+        {
+          "path": "4-2-6-5-7",
+          "personCount": 6
+        },
+        {
+          "path": "1-3-2-5-4",
+          "personCount": 3
+        },
+        {
+          "path": "4-6-7-5-1",
+          "personCount": 8
+        },
+        {
+          "path": "1-3-2-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-7-5-2",
+          "personCount": 6
+        },
+        {
+          "path": "2-4-3-1-6",
+          "personCount": 8
+        },
+        {
+          "path": "2-6-5-1",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-1-4-5",
+          "personCount": 23
+        },
+        {
+          "path": "2-3-1-4-6",
+          "personCount": 37
+        },
+        {
+          "path": "2-3-1-4-7",
+          "personCount": 6
+        },
+        {
+          "path": "2-4-3-1-5",
+          "personCount": 6
+        },
+        {
+          "path": "1-5-2-6-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-2-6-4",
+          "personCount": 5
+        },
+        {
+          "path": "1-5-6-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-5-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-1-5-6",
+          "personCount": 9
+        },
+        {
+          "path": "4-2-1-5-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-7-6-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-1-5-3",
+          "personCount": 9
+        },
+        {
+          "path": "2-4-3-1",
+          "personCount": 54
+        },
+        {
+          "path": "2-4-7-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "3-2-1-6",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "3-2-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-3-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-4-6-7-5",
+          "personCount": 8
+        },
+        {
+          "path": "2-4-3-6",
+          "personCount": 4
+        },
+        {
+          "path": "1-4-2-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-7-3",
+          "personCount": 10
+        },
+        {
+          "path": "3-1-4",
+          "personCount": 8
+        },
+        {
+          "path": "4-1-5-3-2",
+          "personCount": 7
+        },
+        {
+          "path": "3-2-1-4",
+          "personCount": 3
+        },
+        {
+          "path": "3-1-2",
+          "personCount": 9
+        },
+        {
+          "path": "2-3-1",
+          "personCount": 142
+        },
+        {
+          "path": "2-3-4",
+          "personCount": 48
+        },
+        {
+          "path": "4-2-3-1-5",
+          "personCount": 13
+        },
+        {
+          "path": "4-2-3-1-6",
+          "personCount": 26
+        },
+        {
+          "path": "4-2-3-1-7",
+          "personCount": 1
+        },
+        {
+          "path": "5-2-3-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-7-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-1-5",
+          "personCount": 3
+        },
+        {
+          "path": "1-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-2",
+          "personCount": 8
+        },
+        {
+          "path": "4-6-1-2",
+          "personCount": 26
+        },
+        {
+          "path": "2-3-4-1-6",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-1-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-4-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-5-4",
+          "personCount": 7
+        },
+        {
+          "path": "2-6-1-4-3",
+          "personCount": 4
+        },
+        {
+          "path": "2-6-1-4-5",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-5-6-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-7-3-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-5-7-3-2",
+          "personCount": 6
+        },
+        {
+          "path": "2-5-1-4",
+          "personCount": 3
+        },
+        {
+          "path": "1-3-6-4-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-3-7-5",
+          "personCount": 4
+        },
+        {
+          "path": "4-1-3-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-6",
+          "personCount": 19
+        },
+        {
+          "path": "4-1-5",
+          "personCount": 148
+        },
+        {
+          "path": "4-1-3-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-7-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-1-3-6",
+          "personCount": 18
+        },
+        {
+          "path": "4-2-1-3-7",
+          "personCount": 4
+        },
+        {
+          "path": "4-2-7-6-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-1-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-7-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2",
+          "personCount": 564
+        },
+        {
+          "path": "2-3-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-1-3",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-3",
+          "personCount": 31
+        },
+        {
+          "path": "4-2-1-3-5",
+          "personCount": 4
+        },
+        {
+          "path": "2-5-4-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-5-1",
+          "personCount": 113
+        },
+        {
+          "path": "2-4-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-3-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-5-6",
+          "personCount": 14
+        },
+        {
+          "path": "1-4-2-3-6",
+          "personCount": 4
+        },
+        {
+          "path": "1-4-2-3-7",
+          "personCount": 4
+        },
+        {
+          "path": "2-5-1",
+          "personCount": 3
+        },
+        {
+          "path": "2-3-1-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-1-7-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-7-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-3-1",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-6-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-6-2",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-5-1-6",
+          "personCount": 1
+        },
+        {
+          "path": "5-1-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-7-6-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-5-4-2",
+          "personCount": 4
+        },
+        {
+          "path": "4-1-2-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-4-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "1-3-6-2-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-1-4",
+          "personCount": 20
+        },
+        {
+          "path": "2-6-1-3",
+          "personCount": 8
+        },
+        {
+          "path": "4-7-3-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-7-3-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-3-5-2",
+          "personCount": 3
+        },
+        {
+          "path": "4-3-6",
+          "personCount": 3
+        },
+        {
+          "path": "4-7-3-1-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-1-3-6",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-1-3-2",
+          "personCount": 26
+        },
+        {
+          "path": "2-3-1-6",
+          "personCount": 2
+        },
+        {
+          "path": "5-1-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-1-5",
+          "personCount": 4
+        },
+        {
+          "path": "5-4-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-3-1",
+          "personCount": 23
+        },
+        {
+          "path": "2-3-1-4",
+          "personCount": 148
+        },
+        {
+          "path": "5-2-1-4-6",
+          "personCount": 1
+        },
+        {
+          "path": "3-1-4-6-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "3-1-4-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-6-2-4",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-3-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "3-1-5-4-2",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-6-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-3-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-5-7",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-2-5-1",
+          "personCount": 17
+        },
+        {
+          "path": "4-2-3-5-1",
+          "personCount": 2
+        },
+        {
+          "path": "2-1-5-4",
+          "personCount": 98
+        },
+        {
+          "path": "2-1-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-3-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-2-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-1-6",
+          "personCount": 4
+        },
+        {
+          "path": "4-3-2-1-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-1-3",
+          "personCount": 6
+        },
+        {
+          "path": "4-6-2-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2-5-7",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-4-5-1",
+          "personCount": 9
+        },
+        {
+          "path": "4-2-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "6-4-1-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-4-5-7",
+          "personCount": 4
+        },
+        {
+          "path": "4-1-2-5-6",
+          "personCount": 3
+        },
+        {
+          "path": "1-3-7-6-4",
+          "personCount": 14
+        },
+        {
+          "path": "3-1-2-4-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-2-5-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-3-6-1-4",
+          "personCount": 2
+        },
+        {
+          "path": "3-1-2-4-6",
+          "personCount": 3
+        },
+        {
+          "path": "6-4-5-1",
+          "personCount": 2
+        },
+        {
+          "path": "6-4-5-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-5-3",
+          "personCount": 2
+        },
+        {
+          "path": "4-3-5-1-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-3-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-4-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-3-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-7-5-1",
+          "personCount": 11
+        },
+        {
+          "path": "6-7-3-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-3-5-4",
+          "personCount": 9
+        },
+        {
+          "path": "1-3-7-6-2",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-7-5-4",
+          "personCount": 9
+        },
+        {
+          "path": "2-1-3-5-7",
+          "personCount": 4
+        },
+        {
+          "path": "2-4-6-5-1",
+          "personCount": 21
+        },
+        {
+          "path": "5-4-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "2-1-5-3-4",
+          "personCount": 4
+        },
+        {
+          "path": "2-1-4-5-3",
+          "personCount": 5
+        },
+        {
+          "path": "2-4-7-3-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-5-6",
+          "personCount": 9
+        },
+        {
+          "path": "2-4-7-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "3-4-5-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-5-7",
+          "personCount": 6
+        },
+        {
+          "path": "2-4-5-7-1",
+          "personCount": 4
+        },
+        {
+          "path": "2-4-1-3",
+          "personCount": 80
+        },
+        {
+          "path": "2-4-5-7-3",
+          "personCount": 7
+        },
+        {
+          "path": "2-4-7-3-1",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-5-7-6",
+          "personCount": 9
+        },
+        {
+          "path": "4-2-1-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-1-6",
+          "personCount": 51
+        },
+        {
+          "path": "2-4-1-5",
+          "personCount": 68
+        },
+        {
+          "path": "2-4-6-5-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-4-6-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-1-5-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-1-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1-6",
+          "personCount": 5
+        },
+        {
+          "path": "2-1-4",
+          "personCount": 591
+        },
+        {
+          "path": "4-5-1-3",
+          "personCount": 6
+        },
+        {
+          "path": "2-1-3",
+          "personCount": 101
+        },
+        {
+          "path": "2-1-6",
+          "personCount": 15
+        },
+        {
+          "path": "2-1-5",
+          "personCount": 21
+        },
+        {
+          "path": "4-5-1-2",
+          "personCount": 147
+        },
+        {
+          "path": "1-2-6-4-7",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-7-6-4",
+          "personCount": 4
+        },
+        {
+          "path": "1-5-7-6-2",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-6-4-3",
+          "personCount": 17
+        },
+        {
+          "path": "1-2-6-4-5",
+          "personCount": 30
+        },
+        {
+          "path": "4-6-3-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4",
+          "personCount": 31
+        },
+        {
+          "path": "4-6-2-7-3",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-2",
+          "personCount": 110
+        },
+        {
+          "path": "4-3-1-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2-7-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-2-5-3",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-5-1",
+          "personCount": 41
+        },
+        {
+          "path": "1-5-4",
+          "personCount": 141
+        },
+        {
+          "path": "4-2-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-5-7-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-3-4",
+          "personCount": 45
+        },
+        {
+          "path": "2-3-6",
+          "personCount": 5
+        },
+        {
+          "path": "2-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-5-1-2",
+          "personCount": 8
+        },
+        {
+          "path": "4-6-5-1-3",
+          "personCount": 4
+        },
+        {
+          "path": "2-3-4-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-3-6",
+          "personCount": 7
+        },
+        {
+          "path": "4-1-2-3-7",
+          "personCount": 3
+        },
+        {
+          "path": "3-1-2-6-4",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-7-3-1",
+          "personCount": 5
+        },
+        {
+          "path": "3-7-5-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-3-5",
+          "personCount": 4
+        },
+        {
+          "path": "4-5-1-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-5-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-7-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "3-4-1-2",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-7-3-4",
+          "personCount": 7
+        },
+        {
+          "path": "2-1-3-7-4",
+          "personCount": 3
+        },
+        {
+          "path": "4-1-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-3-7-6",
+          "personCount": 9
+        },
+        {
+          "path": "4-1-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-7-4-2",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-3-7-5",
+          "personCount": 5
+        },
+        {
+          "path": "3-1-4-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-6-3-4",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-1-3-2",
+          "personCount": 5
+        },
+        {
+          "path": "6-7-1-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-2-4-5",
+          "personCount": 13
+        },
+        {
+          "path": "1-2-5-4-6",
+          "personCount": 10
+        },
+        {
+          "path": "1-2-5-4-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-7-4-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2-1-5",
+          "personCount": 45
+        },
+        {
+          "path": "1-3-2-4-7",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-2-4-6",
+          "personCount": 33
+        },
+        {
+          "path": "4-6-2-1-3",
+          "personCount": 45
+        },
+        {
+          "path": "2-4-3-6-1",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-4-7-5",
+          "personCount": 3
+        },
+        {
+          "path": "1-4-5-7-3",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-4-6-3",
+          "personCount": 11
+        },
+        {
+          "path": "2-6-4-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-4-6-5",
+          "personCount": 8
+        },
+        {
+          "path": "1-4-5-7-6",
+          "personCount": 4
+        },
+        {
+          "path": "2-6-4-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-1-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-4-6-7",
+          "personCount": 4
+        },
+        {
+          "path": "2-4-3-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-7-4-1",
+          "personCount": 4
+        },
+        {
+          "path": "1-4-6-5-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-5-4",
+          "personCount": 28
+        },
+        {
+          "path": "1-2-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-7-3-2",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-7-3-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-7-5-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "6-4-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "6-4-1-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-7-6-2-4",
+          "personCount": 1
+        },
+        {
+          "path": "6-1-2",
+          "personCount": 4
+        },
+        {
+          "path": "2-1-5-7-3",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-5-7-4",
+          "personCount": 2
+        },
+        {
+          "path": "3-2-1-4-6",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-1-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "6-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "3-4-2-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-1-5-2",
+          "personCount": 2
+        },
+        {
+          "path": "6-2-3-1",
+          "personCount": 3
+        },
+        {
+          "path": "5-1",
+          "personCount": 3
+        },
+        {
+          "path": "5-2",
+          "personCount": 3
+        },
+        {
+          "path": "1-2-3-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "5-4",
+          "personCount": 13
+        },
+        {
+          "path": "1-2-3-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-3-6-4",
+          "personCount": 10
+        },
+        {
+          "path": "2-1-5-7-6",
+          "personCount": 4
+        },
+        {
+          "path": "2-6-3-7-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-7-6-4",
+          "personCount": 10
+        },
+        {
+          "path": "4-6-2-3-1",
+          "personCount": 41
+        },
+        {
+          "path": "2-1-3-4",
+          "personCount": 68
+        },
+        {
+          "path": "2-6-4-5-7",
+          "personCount": 9
+        },
+        {
+          "path": "3-6-2-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-3-6",
+          "personCount": 2
+        },
+        {
+          "path": "2-1-3-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-3-2",
+          "personCount": 23
+        },
+        {
+          "path": "2-1-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-5",
+          "personCount": 29
+        },
+        {
+          "path": "2-6-4-5-1",
+          "personCount": 44
+        },
+        {
+          "path": "3-4-6-2",
+          "personCount": 5
+        },
+        {
+          "path": "4-1-2-6",
+          "personCount": 95
+        },
+        {
+          "path": "4-5-6-1-2",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-3-1-2",
+          "personCount": 4
+        },
+        {
+          "path": "7-1-2-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-3",
+          "personCount": 41
+        },
+        {
+          "path": "2-3-7-6-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-6-2-3-7",
+          "personCount": 3
+        },
+        {
+          "path": "4-6-2-3-5",
+          "personCount": 6
+        },
+        {
+          "path": "1-4-6-3-2",
+          "personCount": 2
+        },
+        {
+          "path": "6-4-1-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-5-4",
+          "personCount": 5
+        },
+        {
+          "path": "6-4-2-3-1",
+          "personCount": 3
+        },
+        {
+          "path": "1-6-7-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-7-6-4-2",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-3-6-1",
+          "personCount": 6
+        },
+        {
+          "path": "4-2-3-6-5",
+          "personCount": 4
+        },
+        {
+          "path": "4-7-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-1-6-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-1-6-5",
+          "personCount": 5
+        },
+        {
+          "path": "4-7-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "6-1-3-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-6-7-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-3-2",
+          "personCount": 21
+        },
+        {
+          "path": "4-3-1",
+          "personCount": 11
+        },
+        {
+          "path": "2-1-6-7-3",
+          "personCount": 2
+        },
+        {
+          "path": "6-2-1-3",
+          "personCount": 2
+        },
+        {
+          "path": "6-2-1-4",
+          "personCount": 4
+        },
+        {
+          "path": "3-1",
+          "personCount": 7
+        },
+        {
+          "path": "1-2-3-4-5",
+          "personCount": 6
+        },
+        {
+          "path": "2-4-1-6-7",
+          "personCount": 2
+        },
+        {
+          "path": "3-2",
+          "personCount": 14
+        },
+        {
+          "path": "5-1-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "3-4",
+          "personCount": 40
+        },
+        {
+          "path": "6-4-5-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "6-4-5-1-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-3-4-6",
+          "personCount": 8
+        },
+        {
+          "path": "4-6-7-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-7-6",
+          "personCount": 3
+        },
+        {
+          "path": "4-6-7-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-5-4-1",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-5-2",
+          "personCount": 27
+        },
+        {
+          "path": "2-3-1-5-4",
+          "personCount": 27
+        },
+        {
+          "path": "1-4-5-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-1-5-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-6-4-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "1-4-3-7-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-2-3-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-4-3-1",
+          "personCount": 33
+        },
+        {
+          "path": "1-5-2-3-6",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-5-1",
+          "personCount": 8
+        },
+        {
+          "path": "1-5-2-3-7",
+          "personCount": 2
+        },
+        {
+          "path": "4-6-5-2",
+          "personCount": 2
+        },
+        {
+          "path": "1-4-5-3-2",
+          "personCount": 3
+        },
+        {
+          "path": "6-1-2-4-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-3-2",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-1",
+          "personCount": 109
+        },
+        {
+          "path": "2-4-6-5",
+          "personCount": 9
+        },
+        {
+          "path": "1-3-5-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-6-3",
+          "personCount": 7
+        },
+        {
+          "path": "1-3-5-2-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-6-7",
+          "personCount": 4
+        },
+        {
+          "path": "3-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-4",
+          "personCount": 2
+        },
+        {
+          "path": "4-5-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1",
+          "personCount": 190
+        },
+        {
+          "path": "4-5-2",
+          "personCount": 46
+        },
+        {
+          "path": "4-5-6",
+          "personCount": 2
+        },
+        {
+          "path": "2-7-5-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "5-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "5-4-6-2-1",
+          "personCount": 2
+        },
+        {
+          "path": "1-2",
+          "personCount": 768
+        },
+        {
+          "path": "1-3",
+          "personCount": 33
+        },
+        {
+          "path": "1-4",
+          "personCount": 1048
+        },
+        {
+          "path": "4-5-7-6-2",
+          "personCount": 7
+        },
+        {
+          "path": "1-5",
+          "personCount": 24
+        },
+        {
+          "path": "1-6",
+          "personCount": 4
+        },
+        {
+          "path": "1-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-2-7-3",
+          "personCount": 2
+        },
+        {
+          "path": "2-6-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-2-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-4-5",
+          "personCount": 22
+        },
+        {
+          "path": "1-3-2-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-2-6-4",
+          "personCount": 34
+        },
+        {
+          "path": "1-4-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-4-3",
+          "personCount": 14
+        },
+        {
+          "path": "2-6-4-1",
+          "personCount": 200
+        },
+        {
+          "path": "1-4-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-3-5-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-5-6-4",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-4-1-7",
+          "personCount": 5
+        },
+        {
+          "path": "4-6-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-4-1-5",
+          "personCount": 43
+        },
+        {
+          "path": "2-6-4-1-3",
+          "personCount": 39
+        },
+        {
+          "path": "4-6-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-2-5",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-2-6",
+          "personCount": 4
+        },
+        {
+          "path": "1-5-4-3-7",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-4-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-6-2",
+          "personCount": 16
+        },
+        {
+          "path": "1-5-4-3-2",
+          "personCount": 11
+        },
+        {
+          "path": "3-7-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-4-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-7-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-2-5-6-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-7-3",
+          "personCount": 9
+        },
+        {
+          "path": "1-6-4",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-5",
+          "personCount": 51
+        },
+        {
+          "path": "2-4-7",
+          "personCount": 2
+        },
+        {
+          "path": "2-4-6",
+          "personCount": 379
+        },
+        {
+          "path": "2-6-1-5-4",
+          "personCount": 8
+        },
+        {
+          "path": "3-7-5-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "5-4-2-1-3",
+          "personCount": 1
+        },
+        {
+          "path": "3-7-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-7-2-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-3-7-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1-2-7",
+          "personCount": 3
+        },
+        {
+          "path": "4-5-1-2-6",
+          "personCount": 35
+        },
+        {
+          "path": "6-2-3-7-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-3-1-5",
+          "personCount": 3
+        },
+        {
+          "path": "4-5-1-2-3",
+          "personCount": 29
+        },
+        {
+          "path": "2-6-3-1-4",
+          "personCount": 6
+        },
+        {
+          "path": "5-2-6-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-4-1-3-5",
+          "personCount": 6
+        },
+        {
+          "path": "2-4-1-3-6",
+          "personCount": 8
+        },
+        {
+          "path": "2-4-1-3-7",
+          "personCount": 10
+        },
+        {
+          "path": "2-3-4-1",
+          "personCount": 12
+        },
+        {
+          "path": "3-1-4-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "3-1-4-2",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-4-6",
+          "personCount": 11
+        },
+        {
+          "path": "3-2-4",
+          "personCount": 17
+        },
+        {
+          "path": "3-2-1",
+          "personCount": 5
+        },
+        {
+          "path": "5-2-4-6",
+          "personCount": 2
+        },
+        {
+          "path": "3-2-4-5-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-6",
+          "personCount": 12
+        },
+        {
+          "path": "2-4-1",
+          "personCount": 661
+        },
+        {
+          "path": "4-1-6-2-3",
+          "personCount": 5
+        },
+        {
+          "path": "4-5-2-3",
+          "personCount": 3
+        },
+        {
+          "path": "2-4-3",
+          "personCount": 46
+        },
+        {
+          "path": "1-4-3-2-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-6-2-5",
+          "personCount": 7
+        },
+        {
+          "path": "4-5-2-1",
+          "personCount": 20
+        },
+        {
+          "path": "1-4-3-2-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-5-7-3-6",
+          "personCount": 1
+        },
+        {
+          "path": "1-5-7-3-4",
+          "personCount": 4
+        },
+        {
+          "path": "1-5-7-3-2",
+          "personCount": 6
+        },
+        {
+          "path": "1-6-2",
+          "personCount": 3
+        },
+        {
+          "path": "1-3-4-5-2",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-4-5-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-3",
+          "personCount": 7
+        },
+        {
+          "path": "2-6-4",
+          "personCount": 551
+        },
+        {
+          "path": "1-3-4-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-1-3-4",
+          "personCount": 5
+        },
+        {
+          "path": "5-1-4-2",
+          "personCount": 3
+        },
+        {
+          "path": "4-3-6-2",
+          "personCount": 2
+        },
+        {
+          "path": "3-4-6",
+          "personCount": 4
+        },
+        {
+          "path": "3-4-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-7-5-4-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-3-2-1",
+          "personCount": 4
+        },
+        {
+          "path": "4-2-5",
+          "personCount": 30
+        },
+        {
+          "path": "4-7-3-2-5",
+          "personCount": 2
+        },
+        {
+          "path": "4-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-7-3-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-6",
+          "personCount": 427
+        },
+        {
+          "path": "4-1-3-6-2",
+          "personCount": 3
+        },
+        {
+          "path": "3-7-4-1-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-1-3-4-5",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-3-4-6",
+          "personCount": 17
+        },
+        {
+          "path": "2-4-7-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "3-1-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "3-1-2-4",
+          "personCount": 5
+        },
+        {
+          "path": "4-2-1",
+          "personCount": 709
+        },
+        {
+          "path": "2-3-6-4",
+          "personCount": 16
+        },
+        {
+          "path": "4-2-3",
+          "personCount": 66
+        },
+        {
+          "path": "3-4-5-7-6",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-2-6",
+          "personCount": 8
+        },
+        {
+          "path": "1-5-4-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "3-4-2",
+          "personCount": 14
+        },
+        {
+          "path": "3-4-1",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-5-2-3",
+          "personCount": 9
+        },
+        {
+          "path": "1-7-3-2-4",
+          "personCount": 2
+        },
+        {
+          "path": "4-3-1-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "2-6-1",
+          "personCount": 31
+        },
+        {
+          "path": "4-6-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-2-3",
+          "personCount": 27
+        },
+        {
+          "path": "4-6-2-5",
+          "personCount": 11
+        },
+        {
+          "path": "4-6-2-1",
+          "personCount": 223
+        },
+        {
+          "path": "2-3-4-6-1",
+          "personCount": 3
+        },
+        {
+          "path": "4-2-6-1",
+          "personCount": 110
+        },
+        {
+          "path": "4-2-6-5",
+          "personCount": 13
+        },
+        {
+          "path": "2-3-5-4-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-6-3",
+          "personCount": 6
+        },
+        {
+          "path": "4-2-6-7",
+          "personCount": 2
+        },
+        {
+          "path": "2-3-5-4-1",
+          "personCount": 3
+        },
+        {
+          "path": "6-4-1-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-4-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-2-6-3",
+          "personCount": 9
+        },
+        {
+          "path": "1-3-7-5-4",
+          "personCount": 5
+        },
+        {
+          "path": "4-1-2-6-5",
+          "personCount": 13
+        },
+        {
+          "path": "4-5-1-6-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-1-6-2",
+          "personCount": 21
+        },
+        {
+          "path": "1-3-7-5-2",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-2-6-7",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-3-6-4",
+          "personCount": 11
+        },
+        {
+          "path": "2-6-7-4-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-3-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-3-2-6",
+          "personCount": 1
+        },
+        {
+          "path": "3-2-1-7-4",
+          "personCount": 1
+        },
+        {
+          "path": "3-4-5-1-2",
+          "personCount": 2
+        },
+        {
+          "path": "3-2-6-4",
+          "personCount": 4
+        },
+        {
+          "path": "4-5-3-2-1",
+          "personCount": 3
+        },
+        {
+          "path": "3-2-4-1-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-4-3",
+          "personCount": 20
+        },
+        {
+          "path": "2-1-4-5",
+          "personCount": 56
+        },
+        {
+          "path": "2-1-4-7",
+          "personCount": 3
+        },
+        {
+          "path": "5-2-3-1-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-6-7-5",
+          "personCount": 2
+        },
+        {
+          "path": "2-1-4-6",
+          "personCount": 106
+        },
+        {
+          "path": "1-2-6-7-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-6-3-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-6",
+          "personCount": 22
+        },
+        {
+          "path": "1-2-5",
+          "personCount": 10
+        },
+        {
+          "path": "1-2-4",
+          "personCount": 464
+        },
+        {
+          "path": "1-2-3",
+          "personCount": 58
+        },
+        {
+          "path": "1-2-7-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-6",
+          "personCount": 40
+        },
+        {
+          "path": "1-4-5",
+          "personCount": 43
+        },
+        {
+          "path": "4-3-2-1",
+          "personCount": 5
+        },
+        {
+          "path": "1-2-4-3",
+          "personCount": 15
+        },
+        {
+          "path": "1-2-4-5",
+          "personCount": 47
+        },
+        {
+          "path": "1-2-4-6",
+          "personCount": 79
+        },
+        {
+          "path": "5-7-2-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "1-3-2-6",
+          "personCount": 4
+        },
+        {
+          "path": "4-3-2-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-3-2-5",
+          "personCount": 4
+        },
+        {
+          "path": "1-3-2-4",
+          "personCount": 137
+        },
+        {
+          "path": "2-3-6-4-1",
+          "personCount": 3
+        },
+        {
+          "path": "6-4-2-3",
+          "personCount": 1
+        },
+        {
+          "path": "5-4-2-3-1",
+          "personCount": 1
+        },
+        {
+          "path": "6-4-2-1",
+          "personCount": 4
+        },
+        {
+          "path": "3-4-2-6",
+          "personCount": 2
+        },
+        {
+          "path": "4-1-3-2-5",
+          "personCount": 6
+        },
+        {
+          "path": "4-1-6-2",
+          "personCount": 49
+        },
+        {
+          "path": "4-1-3-2-6",
+          "personCount": 31
+        },
+        {
+          "path": "4-1-3-2-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-3-6-4-5",
+          "personCount": 3
+        },
+        {
+          "path": "3-4-2-1",
+          "personCount": 4
+        },
+        {
+          "path": "4-1-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-1-6-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-5-4-6",
+          "personCount": 34
+        },
+        {
+          "path": "5-4-2-1",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-5-4-3",
+          "personCount": 12
+        },
+        {
+          "path": "4-2-1-6-3",
+          "personCount": 1
+        },
+        {
+          "path": "4-2-1-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "4-5-2-6-1",
+          "personCount": 4
+        },
+        {
+          "path": "2-1-4-6-3",
+          "personCount": 11
+        },
+        {
+          "path": "2-1-4-6-5",
+          "personCount": 4
+        },
+        {
+          "path": "2-4-5-6-1",
+          "personCount": 9
+        },
+        {
+          "path": "2-1-4-6-7",
+          "personCount": 4
+        },
+        {
+          "path": "2-4-5-6-3",
+          "personCount": 2
+        },
+        {
+          "path": "4-2-1-6-7",
+          "personCount": 3
+        },
+        {
+          "path": "3-2-4-6",
+          "personCount": 2
+        },
+        {
+          "path": "1-4-6-7-5",
+          "personCount": 2
+        },
+        {
+          "path": "1-4-6-7-2",
+          "personCount": 1
+        },
+        {
+          "path": "3-2-4-1",
+          "personCount": 6
+        },
+        {
+          "path": "2-5-6-4-3",
+          "personCount": 1
+        },
+        {
+          "path": "1-2-6-5-7",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-6-3",
+          "personCount": 3
+        },
+        {
+          "path": "2-1-6-5",
+          "personCount": 1
+        },
+        {
+          "path": "2-1-6-4",
+          "personCount": 45
+        },
+        {
+          "path": "1-2-6-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "6-2-7-5-4",
+          "personCount": 1
+        },
+        {
+          "path": "1-4-3",
+          "personCount": 10
+        },
+        {
+          "path": "1-4-2",
+          "personCount": 464
+        },
+        {
+          "path": "1-2-5-7-6",
+          "personCount": 1
+        }
+      ]
+    }
+  ]
+}

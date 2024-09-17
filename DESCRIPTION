@@ -9,9 +9,10 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports:
+Depends:
     shiny,
-    shinydashboard,
+    shinydashboard
+Imports:
     pkgload,
     htmlwidgets,
     jsonlite,
@@ -19,5 +20,8 @@ Imports:
     bslib,
     glue,
     DT,
-    shiny.info
+    shiny.info,
+    tibble,
+    dplyr,
+    purrr
 RoxygenNote: 7.3.2
