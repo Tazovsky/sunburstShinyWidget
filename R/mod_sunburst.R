@@ -24,7 +24,7 @@ sunburstUI <- function(id) {
       full_screen = TRUE,
       bslib::card_header("Sunburst plot"),
       # plotly::plotlyOutput(ns("plot"))
-      sunburstAtlasOutput(ns("sunburst_plot"))
+      sunburstShinyWidgetOutput(ns("sunburst_plot"))
     ),
     bslib::card(
       full_screen = FALSE,
@@ -57,8 +57,8 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    output$sunburst_plot <- renderSunburstAtlas({
-      sunburstAtlas(chartData, design)
+    output$sunburst_plot <- renderSunburstShinyWidget({
+      sunburstShinyWidget(chartData, design)
     })
 
 

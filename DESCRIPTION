@@ -1,4 +1,4 @@
-Package: sunburstWidget
+Package: sunburstShinyWidget
 Type: Package
 Title: Sunburst HTML Widget
 Version: 0.4.0
