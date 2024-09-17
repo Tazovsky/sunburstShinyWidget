@@ -20,7 +20,6 @@ function SunburstModule(d3, Chart) {
 
       const defaultOptions = {
         tooltip: (d) => {
-          //debugger;
           return `<div>No Tooltip Set</div>`;
         },
         minRadians: 0.005
@@ -96,7 +95,8 @@ function SunburstModule(d3, Chart) {
         .attr("class", d => (options.nodeClass && options.nodeClass(d)) || "node")
         .style("fill", d => d.isSplit ? "#000" : options.colors(d.data.name))
         .style("opacity", d => d.isSplit ? 0 : 1)
-        .on('mouseover', d => self.tip.show(Object.assign({}, d, { tipDirection: self.getTipDirection(d), tipOffset: self.getTipOffset(d, arc) }), event.target))
+        .on('mouseover', d => self.tip.show(Object.assign({}, d, { tipDirection: self.getTipDirection(d), tipOffset: self.getTipOffset(d, arc)}), event.target))
+        //.on('mouseover', d => options.mouseover && options.mouseover(d))
         .on('mouseout', d => self.tip.hide(d, event.target))
         .on('click', (d, i)=> options.onclick && options.onclick(d, i, data));
     }
