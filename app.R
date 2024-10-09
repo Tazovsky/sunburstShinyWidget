@@ -6,8 +6,9 @@ pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
 
 # Setup -------------------------------------------------------------------
 
-chartData <- jsonlite::read_json("data/chartData.json")
-design <- jsonlite::read_json("data/design.json")
+data_dir <- "data"
+chartData <- jsonlite::read_json(file.path(data_dir, "chartData.json"))
+design <- jsonlite::read_json(file.path(data_dir, "design.json"))
 eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
 # UI ----------------------------------------------------------------------
