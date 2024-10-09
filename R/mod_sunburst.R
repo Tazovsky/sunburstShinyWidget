@@ -108,10 +108,13 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
                                                   options = list(dom = "t"))
     })
 
+    click_data <- reactive(input$sunburst_plot_click_data)
     pathway <- reactive(input$sunburst_plot_click_data$pathway)
 
-    observeEvent(pathway(), {
-      btns_df <- req(pathway()) %>%
+    observeEvent(click_data(), {
+      click_data <- req(click_data())
+
+      btns_df <- click_data$pathway %>%
         lapply(function(path) {
           df <- path$names %>%
             dplyr::bind_rows() %>%
@@ -120,12 +123,13 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
               session$ns(paste0(name, "-", as.character(as.integer(Sys.time())))), name, color, btn_font_size) %>% as.character())
 
           tibble::tibble(Name = paste0(df$btns, collapse = " "),
-                         Count = path$count)
+                         Remain = path$count)
         }) %>%
         dplyr::bind_rows()
 
-      btns_df <- btns_df %>%
-        dplyr::mutate(Count = sprintf("%s (%s%%)", Count, round(Count / sum(Count) * 100, 2)))
+      totalPathways <- click_data$data$cohortPathways[[1]]$summary$totalPathways
+
+      btns_df <- add_remain_and_diff_cols(btns_df, totalPathways)
 
       output$selectedCohorts <- DT::renderDT(btns_df,
                                              rownames = TRUE,
@@ -275,4 +279,24 @@ match_color <- function(x, eventCodes) {
     unlist() %>%
     paste0(collapse = ",")
 
+}
+
+
+#' add_remain_and_diff_cols
+#'
+#' @param btns_df
+#' @param totalPathways
+#'
+#' @return data.frame
+#' @export
+#'
+add_remain_and_diff_cols <- function(btns_df, totalPathways) {
+  btns_df$Diff <- abs(c(totalPathways - btns_df$Remain[1], diff(btns_df$Remain)))
+  btns_df$Diff_percent <- round((btns_df$Diff / totalPathways) * 100, 1)
+  btns_df$Remain_percent <- round((btns_df$Remain / totalPathways) * 100, 1)
+  btns_df$Diff <- paste0(btns_df$Diff, " (", btns_df$Diff_percent, "%)")
+  btns_df$Remain <- paste0(btns_df$Remain, " (", btns_df$Remain_percent, "%)")
+  btns_df$Remain_percent <- NULL
+  btns_df$Diff_percent <- NULL
+  btns_df
 }
