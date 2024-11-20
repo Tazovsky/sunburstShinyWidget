@@ -295,7 +295,7 @@ add_remain_and_diff_cols <- function(btns_df, totalPathways) {
   btns_df$Diff <- abs(c(totalPathways - btns_df$Remain[1], diff(btns_df$Remain)))
   btns_df$Diff_percent <- round((btns_df$Diff / totalPathways) * 100, 1)
   btns_df$Remain_percent <- round((btns_df$Remain / totalPathways) * 100, 1)
-  btns_df$Diff <- paste0(btns_df$Diff, " (", btns_df$Diff_percent, "%)")
+  btns_df$Diff <- paste0(scales::comma(btns_df$Diff), " (", btns_df$Diff_percent, "%)")
   btns_df$Remain <- paste0(scales::comma(btns_df$Remain), " (", btns_df$Remain_percent, "%)")
   btns_df$Remain_percent <- NULL
   btns_df$Diff_percent <- NULL
