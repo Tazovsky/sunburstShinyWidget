@@ -29,11 +29,16 @@ sunburstUI <- function(id) {
     bslib::card(
       full_screen = FALSE,
       bslib::card_header("Path details"),
-      DT::DTOutput(ns("selectedCohorts"))
+      DT::DTOutput(ns("selectedCohorts")),
     ),
     bslib::card(
       full_screen = FALSE,
-      DT::DTOutput(ns("click_data"))
+      bslib::card_body(
+        DT::DTOutput(ns("click_data"))
+      ),
+      bslib::card_footer(
+        downloadButton(outputId = ns("downloadSelectedCohorts"), label = "Download Table")
+      )
     ),
   )
 
@@ -139,8 +144,6 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
 
     })
 
-
-
     observeEvent(input$sunburst_plot_click_data, {
       click_event <- req(input$sunburst_plot_click_data)
       event_code <- as.integer(click_event$d$name)
@@ -181,6 +184,7 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
         mutate(buttons = match_color(name, ev_codes))
     })
 
+    steps_table <- reactiveVal()
     observeEvent(list(input$sunburst_plot_pathway_group_datatable, event_codes_and_btns()), {
       pathway_group_dt <- req(input$sunburst_plot_pathway_group_datatable)
       print("input$sunburst_plot_pathway_group_datatable")
@@ -220,16 +224,31 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
           dplyr::arrange(dplyr::across(dplyr::matches("^path2[0-9]+")))
       }
 
+
+      df2render <- df %>%
+        dplyr::mutate(personCount = scales::comma(personCount)) %>%
+        dplyr::select(dplyr::starts_with("Step"), personCount)
+
+      steps_table(df2render)
+
       output$click_data <- DT::renderDT(
-        df %>%
-          dplyr::mutate(personCount = scales::comma(personCount)) %>%
-          dplyr::select(dplyr::starts_with("Step"), personCount),
+        df2render,
         rownames = FALSE,
         # colnames = NULL,
         escape = FALSE#,
         # options = list(dom = "t")
       )
     })
+
+    output$downloadSelectedCohorts <- downloadHandler(
+      filename = function() {
+        x <- req(input$sunburst_plot_chart_data_converted)
+        paste0(gsub("\\s", "_", x$cohortPathways[[1]]$targetCohortName), "_steps_table.csv")
+      },
+      content = function(file) {
+        utils::write.csv(steps_table(), file)
+      }
+    )
 
 
   })
