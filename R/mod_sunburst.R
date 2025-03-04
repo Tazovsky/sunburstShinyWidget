@@ -55,7 +55,12 @@ sunburstUI <- function(id) {
 #' @return
 #' @export
 #' @rdname sunburst
-sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_colors_in_table = FALSE) {
+sunburstServer <- function(id,
+                           chartData,
+                           design,
+                           btn_font_size = "14px",
+                           show_colors_in_table = FALSE,
+                           steps_table_export_name = reactive(NULL)) {
 
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
@@ -243,7 +248,11 @@ sunburstServer <- function(id, chartData, design, btn_font_size = "14px", show_c
     output$downloadSelectedCohorts <- downloadHandler(
       filename = function() {
         x <- req(input$sunburst_plot_chart_data_converted)
-        paste0(gsub("\\s", "_", x$cohortPathways[[1]]$targetCohortName), "_steps_table.csv")
+        if (isTruthy(steps_table_export_name())) {
+          steps_table_export_name()
+        } else {
+          paste0(gsub("\\s", "_", x$cohortPathways[[1]]$targetCohortName), "_steps_table.csv")
+        }
       },
       content = function(file) {
         utils::write.csv(steps_table(), file)
