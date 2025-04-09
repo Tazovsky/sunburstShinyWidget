@@ -60,7 +60,8 @@ sunburstServer <- function(id,
                            design,
                            btn_font_size = "14px",
                            show_colors_in_table = FALSE,
-                           steps_table_export_name = reactive(NULL)) {
+                           steps_table_export_name = reactive(NULL),
+                           n_steps = reactive(5L)) {
 
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
@@ -175,7 +176,7 @@ sunburstServer <- function(id,
 
     observeEvent(input$sunburst_plot_chart_data_converted, {
       chart_data <- req(input$sunburst_plot_chart_data_converted)
-      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, 5)
+      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, n_steps())
       print("chart_data$eventCohorts")
     })
 
@@ -202,6 +203,10 @@ sunburstServer <- function(id,
       pg <- pathway_group_dt[[1]]
 
       df <- pg$data %>%
+        lapply(function(x) {
+          x$path <- x$path %>% unlist() %>% head(n_steps()) %>% paste0(collapse = "-")
+          x
+        }) %>%
         dplyr::bind_rows() %>%
         dplyr::mutate(path2 = strsplit(path, "-")) %>%
         dplyr::rowwise()
@@ -236,12 +241,20 @@ sunburstServer <- function(id,
 
       steps_table(df2render)
 
+      browser()
+
       output$click_data <- DT::renderDT(
         df2render,
         rownames = FALSE,
         # colnames = NULL,
         escape = FALSE#,
         # options = list(dom = "t")
+        , options = list(
+          paging = TRUE,         # Enable pagination
+          pageLength = 10,       # Number of rows per page
+          lengthMenu = c(10, 15, 20, 50),  # Dropdown menu for rows per page
+          searching = TRUE       # Enable search box
+        )
       )
     })
 
