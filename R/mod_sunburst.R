@@ -13,6 +13,8 @@ sunburstUI <- function(id) {
     bslib::card(
       full_screen = FALSE,
       bslib::card_header("Legend"),
+      waiter::useWaiter(),
+      waiter::autoWaiter(),
       tags$strong("Target Cohort"),
       uiOutput(ns("legend_target_cohort")),
       bslib::nav_spacer(),
@@ -190,9 +192,14 @@ sunburstServer <- function(id,
         mutate(buttons = match_color(name, ev_codes))
     })
 
+    w <- waiter::Waiter$new(id = ns("click_data"))
     steps_table <- reactiveVal()
     observeEvent(list(input$sunburst_plot_pathway_group_datatable, event_codes_and_btns()), {
       pathway_group_dt <- req(input$sunburst_plot_pathway_group_datatable)
+      w$show()
+      on.exit({
+        w$hide()
+      })
       print("input$sunburst_plot_pathway_group_datatable")
       event_codes <- req(event_codes_and_btns())
 
@@ -240,8 +247,6 @@ sunburstServer <- function(id,
         dplyr::select(dplyr::starts_with("Step"), personCount)
 
       steps_table(df2render)
-
-      browser()
 
       output$click_data <- DT::renderDT(
         df2render,
