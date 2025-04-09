@@ -13,6 +13,8 @@ sunburstUI <- function(id) {
     bslib::card(
       full_screen = FALSE,
       bslib::card_header("Legend"),
+      waiter::useWaiter(),
+      waiter::autoWaiter(),
       tags$strong("Target Cohort"),
       uiOutput(ns("legend_target_cohort")),
       bslib::nav_spacer(),
@@ -60,7 +62,8 @@ sunburstServer <- function(id,
                            design,
                            btn_font_size = "14px",
                            show_colors_in_table = FALSE,
-                           steps_table_export_name = reactive(NULL)) {
+                           steps_table_export_name = reactive(NULL),
+                           n_steps = reactive(5L)) {
 
   eventCodes <- chartData$eventCodes %>% dplyr::bind_rows()
 
@@ -175,7 +178,7 @@ sunburstServer <- function(id,
 
     observeEvent(input$sunburst_plot_chart_data_converted, {
       chart_data <- req(input$sunburst_plot_chart_data_converted)
-      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, 5)
+      getPathwayGroupDatatable(ns("sunburst_plot"), chartData, n_steps())
       print("chart_data$eventCohorts")
     })
 
@@ -189,9 +192,14 @@ sunburstServer <- function(id,
         mutate(buttons = match_color(name, ev_codes))
     })
 
+    w <- waiter::Waiter$new(id = ns("click_data"))
     steps_table <- reactiveVal()
     observeEvent(list(input$sunburst_plot_pathway_group_datatable, event_codes_and_btns()), {
       pathway_group_dt <- req(input$sunburst_plot_pathway_group_datatable)
+      w$show()
+      on.exit({
+        w$hide()
+      })
       print("input$sunburst_plot_pathway_group_datatable")
       event_codes <- req(event_codes_and_btns())
 
@@ -202,6 +210,10 @@ sunburstServer <- function(id,
       pg <- pathway_group_dt[[1]]
 
       df <- pg$data %>%
+        lapply(function(x) {
+          x$path <- x$path %>% unlist() %>% head(n_steps()) %>% paste0(collapse = "-")
+          x
+        }) %>%
         dplyr::bind_rows() %>%
         dplyr::mutate(path2 = strsplit(path, "-")) %>%
         dplyr::rowwise()
@@ -242,6 +254,12 @@ sunburstServer <- function(id,
         # colnames = NULL,
         escape = FALSE#,
         # options = list(dom = "t")
+        , options = list(
+          paging = TRUE,         # Enable pagination
+          pageLength = 10,       # Number of rows per page
+          lengthMenu = c(10, 15, 20, 50),  # Dropdown menu for rows per page
+          searching = TRUE       # Enable search box
+        )
       )
     })
 

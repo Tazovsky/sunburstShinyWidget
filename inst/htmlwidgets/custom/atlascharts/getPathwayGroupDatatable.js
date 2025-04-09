@@ -19,6 +19,29 @@ function percentFormat(v) {
 		return `${v.toFixed(2)}%`;
 	}
 
+
+
+function unwrapPathwayGroup(pathwayGroup) {
+				if (pathwayGroup) {
+				return {
+					// id: c.id,
+					// name: c.name,
+					targetCohortCount: pathwayGroup.targetCohortCount,
+					totalPathwaysCount: pathwayGroup.totalPathwaysCount,
+					pathways: pathwayGroup.pathways.map(p => ({ // split pathway paths into paths and counts
+						path : p.path.split('-')
+							.filter(step => step != "end") // remove end markers from pathway
+							.map(p => +p)
+							.concat(Array(MAX_PATH_LENGTH).fill(null)) // pad end of paths to be at least MAX_PATH_LENGTH
+							.slice(0,MAX_PATH_LENGTH), // limit path to MAX_PATH_LENGTH.
+						personCount: p.personCount
+					}))
+				}
+			} else {
+				return null;
+			}
+}
+
 function getPathwayGroupData(pathwayGroup, pathLength) {
 	let groups = pathwayGroup.pathways.reduce((acc,cur) => { // reduce pathways into a list of paths with counts
 		const key = JSON.stringify(cur.path.slice(0,pathLength));
@@ -36,7 +59,7 @@ function getPathwayGroupData(pathwayGroup, pathLength) {
 		row.cohortPercent = 100.0 * row.personCount / pathwayGroup.cohortCount;
 	});
 	return data;
-}	
+}
 
 
 // works: getPathwayGroupDatatable(pathwayAnalysisDTO.pathwayGroups[0], 5)
@@ -48,7 +71,7 @@ prepareReportData() {
 			return({
 				debugger;
 				cohorts: design.targetCohorts.filter(c => this.filterList.selectedValues().includes(c.id)).map(c => {
-					
+
 					const pathwayGroup = pathwayGroups.find(p => p.targetCohortId == c.id);
 */
 
@@ -71,8 +94,12 @@ function getPathwayGroupDatatable(pathwayGroup, pathLength) {
         columnValueBuilder('% of Cohort', "cohortPercent", percentFormat) // Static string
     ];
 
-    let data = pathwayGroup ? this.getPathwayGroupData(pathwayGroup, pathLength) : [];
+    let unwrappedPathwayGroup = unwrapPathwayGroup(pathwayGroup);
 
+
+    let data = unwrappedPathwayGroup ? this.getPathwayGroupData(unwrappedPathwayGroup, pathLength) : [];
+
+	  //debugger;
     return {
         data: data,
         options: {
@@ -96,9 +123,9 @@ function prepareReportData(design, pathwayAnalysisDTO, targetCohortId) {
 			const pathwayGroup = pathwayGroups.find(p => p.targetCohortId == c.id);
 			if (pathwayGroup) {
 				return {
-					id: c.id, 
-					name: c.name, 
-					cohortCount: pathwayGroup.targetCohortCount, 
+					id: c.id,
+					name: c.name,
+					cohortCount: pathwayGroup.targetCohortCount,
 					pathwayCount: pathwayGroup.totalPathwaysCount,
 					pathways: pathwayGroup.pathways.map(p => ({ // split pathway paths into paths and counts
 						path : p.path.split('-')
@@ -115,5 +142,5 @@ function prepareReportData(design, pathwayAnalysisDTO, targetCohortId) {
 		}),
 		//eventCodes: this.results.data.eventCodes
 		eventCodes: null
-	});		
+	});
 }
