@@ -1,7 +1,14 @@
-#' <Add Title>
+#' Create a Sunburst Shiny Widget
 #'
-#' <Add Description>
+#' Creates an interactive sunburst plot as an HTML widget.
 #'
+#' @param data A list containing the chart data.
+#' @param design A list containing the design configuration.
+#' @param width Widget width (a valid CSS unit or a number).
+#' @param height Widget height (a valid CSS unit or a number).
+#' @param elementId An optional element ID for the widget.
+#'
+#' @return An \code{htmlwidget} object.
 #' @import htmlwidgets
 #'
 #' @export

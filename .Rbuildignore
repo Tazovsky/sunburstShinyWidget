@@ -4,3 +4,6 @@
 ^\.Rproj\.user$
 ^dev$
 ^LICENSE\.md$
+^CLAUDE\.md$
+^app\.R$
+^data$
