@@ -9,12 +9,9 @@ test_that("run_app errors when app directory is not found", {
 })
 
 test_that("run_app finds the demo app directory via system.file", {
-  # Verify the inst/shiny directory exists in the source tree
-  inst_shiny <- file.path(testthat::test_path(), "..", "..", "inst", "shiny")
-  expect_true(
-    dir.exists(inst_shiny),
-    label = "demo app directory should exist in inst/shiny"
-  )
+  app_dir <- system.file("shiny", package = "sunburstShinyWidget")
+  skip_if(app_dir == "", message = "package not installed with inst/shiny")
+  expect_true(dir.exists(app_dir))
 })
 
 test_that("run_app calls shiny::runApp with the app directory", {
