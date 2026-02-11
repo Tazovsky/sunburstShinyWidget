@@ -7,3 +7,7 @@
 ^CLAUDE\.md$
 ^app\.R$
 ^data$
+^\.claude$
+^docs$
+^doc$
+^Meta$

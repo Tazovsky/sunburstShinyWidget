@@ -1,0 +1,299 @@
+---
+title: "Getting Started with sunburstShinyWidget"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with sunburstShinyWidget}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  eval = FALSE
+)
+```
+
+## What is sunburstShinyWidget?
+
+sunburstShinyWidget provides an interactive D3.js sunburst chart as a Shiny htmlwidget. It is designed for visualizing OHDSI ATLAS pathway analysis data — treatment sequences patients follow over time.
+
+The chart renders pathways as concentric rings where each ring is a treatment step and arc widths reflect patient counts. Clicking an arc shows the full pathway with drop-off statistics.
+
+## Basic Usage
+
+The simplest way to use the package is through its Shiny module:
+
+```{r basic-usage}
+library(shiny)
+library(bslib)
+library(sunburstShinyWidget)
+
+chartData <- jsonlite::read_json("path/to/chartData.json")
+design <- jsonlite::read_json("path/to/design.json")
+
+ui <- page_sidebar(
+  title = "Sunburst plot",
+  sidebar = sidebar(open = FALSE),
+  sunburstUI("my_plot")
+)
+
+server <- function(input, output) {
+  sunburstServer("my_plot", chartData, design)
+}
+
+shinyApp(ui, server)
+```
+
+`sunburstUI` creates a 4-panel layout:
+
+- **Legend** (left) — target cohort info and color-coded event cohort buttons
+- **Sunburst chart** (center) — the interactive D3.js visualization
+- **Path details** (right) — populates when you click a sunburst arc, showing Remain and Diff counts
+- **Steps table** (bottom) — aggregated pathway steps with a CSV download button
+
+## Module Parameters
+
+`sunburstServer` accepts several optional parameters to customize behavior:
+
+```{r server-params}
+sunburstServer(
+  id = "my_plot",
+  chartData = chartData,
+  design = design,
+  btn_font_size = "14px",                    # Font size for colored cohort buttons
+  show_colors_in_table = FALSE,              # TRUE = colored buttons in steps table
+  steps_table_export_name = reactive(NULL),  # Custom CSV export filename
+  n_steps = reactive(5L)                     # Number of steps shown in the table
+)
+```
+
+### Controlling the Number of Steps
+
+The `n_steps` parameter controls how many Step columns appear in the bottom table. It accepts a reactive, so you can make it dynamic:
+
+```{r dynamic-steps}
+server <- function(input, output) {
+  sunburstServer(
+    "my_plot", chartData, design,
+    n_steps = reactive(input$step_slider)
+  )
+}
+```
+
+Note: the sunburst chart itself always renders all steps up to `design$maxDepth`. The `n_steps` parameter only affects the table.
+
+### Custom Export Filename
+
+```{r custom-filename}
+sunburstServer(
+  "my_plot", chartData, design,
+  steps_table_export_name = reactive("my_analysis_steps.csv")
+)
+```
+
+If not provided, the filename defaults to `{TargetCohortName}_steps_table.csv`.
+
+## Using the Low-Level Widget
+
+If you need custom UI instead of the full module dashboard, use the widget directly:
+
+```{r low-level}
+ui <- fluidPage(
+  sunburstShinyWidgetOutput("my_sunburst", height = "600px")
+)
+
+server <- function(input, output) {
+  output$my_sunburst <- renderSunburstShinyWidget({
+    sunburstShinyWidget(chartData, design)
+  })
+}
+```
+
+When using the widget directly, you handle all UI layout and event processing yourself. The widget sends data back to R through Shiny inputs with these suffixes appended to the output ID:
+
+| Input Suffix | Contents |
+|-------------|----------|
+| `_chart_data_converted` | Converted chart data with color mappings |
+| `_click_data` | Clicked arc info: pathway, node data, ancestor path |
+| `_pathway_group_datatable` | Aggregated steps table data |
+
+For example, if your output ID is `"my_sunburst"`, access click data in the server as `input$my_sunburst_click_data`.
+
+## Data Format
+
+The widget requires two data structures, typically from an OHDSI ATLAS pathway analysis export.
+
+### chartData
+
+Contains pathway results — event codes and the pathways themselves:
+
+```{r chartdata-structure}
+list(
+  eventCodes = list(
+    list(code = 1L, name = "Glipizide-txp", isCombo = FALSE),
+    list(code = 2L, name = "Metformin-txp", isCombo = FALSE),
+    list(code = 4L, name = "Simvastatin-txp", isCombo = FALSE),
+    list(code = 3L, name = "Glipizide-txp,Metformin-txp", isCombo = TRUE)
+  ),
+  pathwayGroups = list(
+    list(
+      targetCohortId = 1781666L,
+      targetCohortCount = 756L,
+      totalPathwaysCount = 366L,
+      pathways = list(
+        list(path = "4-end", personCount = 115L),
+        list(path = "4-2-end", personCount = 35L),
+        list(path = "2-end", personCount = 35L)
+      )
+    )
+  )
+)
+```
+
+### design
+
+Contains the analysis configuration — which cohorts to visualize and display settings:
+
+```{r design-structure}
+list(
+  name = "IQT-Pathways",
+  targetCohorts = list(
+    list(id = 1781666L, name = "T2DM Treatment group")
+  ),
+  eventCohorts = list(
+    list(id = 1789987L, name = "Glipizide-txp"),
+    list(id = 1789986L, name = "Metformin-txp"),
+    list(id = 1789985L, name = "Simvastatin-txp")
+  ),
+  combinationWindow = 3L,
+  maxDepth = 5L
+)
+```
+
+Key fields:
+
+- **`maxDepth`** — maximum pathway steps tracked. Paths shorter than this get an `"-end"` suffix.
+- **`combinationWindow`** — days within which concurrent treatments are combined into a single event code.
+- **`targetCohortId`** in chartData must match an `id` in design's `targetCohorts`.
+
+### How to Get This Data
+
+Export from OHDSI ATLAS:
+
+1. Run a pathway analysis in ATLAS
+2. Export the `PathwayDesignData.json`
+3. The `data` key becomes your `chartData`, the `design` key becomes your `design`
+
+```{r read-atlas-export}
+full_export <- jsonlite::read_json("PathwayDesignData.json")
+chartData <- full_export$data
+design <- full_export$design
+```
+
+Or load the included sample data from two separate files:
+
+```{r read-sample}
+chartData <- jsonlite::read_json(
+  system.file("extdata", "chartData.json", package = "sunburstShinyWidget")
+)
+design <- jsonlite::read_json(
+  system.file("extdata", "design.json", package = "sunburstShinyWidget")
+)
+```
+
+## Understanding Bitwise Event Codes
+
+This is the most unusual aspect of the data format. Each base treatment gets a power-of-2 code:
+
+| Treatment | Code | Binary |
+|-----------|------|--------|
+| Glipizide | 1 | `001` |
+| Metformin | 2 | `010` |
+| Simvastatin | 4 | `100` |
+
+Combination treatments use **bitwise OR**:
+
+| Combination | Code | Binary |
+|-------------|------|--------|
+| Glipizide + Metformin | 3 | `011` |
+| Glipizide + Simvastatin | 5 | `101` |
+| Metformin + Simvastatin | 6 | `110` |
+| All three | 7 | `111` |
+
+The chart handles this automatically — combo arcs are split into individually colored segments so you can see which treatments compose the combination.
+
+A pathway like `"4-2-6-end"` reads as: Step 1 = Simvastatin, Step 2 = Metformin, Step 3 = Metformin + Simvastatin (combo), then the pathway ended.
+
+## Embedding in a Larger App
+
+Since `sunburstUI`/`sunburstServer` is a Shiny module, you can embed it alongside other components:
+
+```{r larger-app}
+ui <- page_navbar(
+  title = "My Analysis Dashboard",
+  nav_panel("Overview", "Summary stats here..."),
+  nav_panel("Pathways",
+    layout_columns(
+      col_widths = 12,
+      sunburstUI("pathways")
+    )
+  ),
+  nav_panel("Details", "Other analysis outputs...")
+)
+
+server <- function(input, output) {
+  sunburstServer("pathways", chartData, design)
+}
+```
+
+You can also use multiple sunburst modules for different cohorts:
+
+```{r multiple-modules}
+ui <- page_fluid(
+  h3("Cohort A"),
+  sunburstUI("cohort_a"),
+  h3("Cohort B"),
+  sunburstUI("cohort_b")
+)
+
+server <- function(input, output) {
+  sunburstServer("cohort_a", chartData_a, design_a)
+  sunburstServer("cohort_b", chartData_b, design_b)
+}
+```
+
+Each module instance is fully namespaced — no ID collisions.
+
+## Helper Functions
+
+The package exports several utility functions used internally that may be useful in custom workflows:
+
+### `add_remain_and_diff_cols(btns_df, totalPathways)`
+
+Adds Remain and Diff columns (with percentages) to a pathway breakdown table:
+
+```{r helper-remain}
+df <- data.frame(Name = c("Step 1", "Step 2"), Remain = c(300, 180))
+add_remain_and_diff_cols(df, totalPathways = 756)
+#>     Name          Remain            Diff
+#> 1 Step 1 300 (39.7%) 456 (60.3%)
+#> 2 Step 2 180 (23.8%) 120 (15.9%)
+```
+
+### `customActionButton(inputId, label, color, font_size)`
+
+Creates a Shiny action button with a custom background color:
+
+```{r helper-button}
+customActionButton("btn1", "Metformin", "#1f77b4", font_size = "12px")
+```
+
+### `match_color(x, eventCodes)`
+
+Maps comma-separated event names to colored HTML button strings using an event codes data frame.
+
+### `getPathwayGroupDatatable(id, pathwayAnalysisDTO, pathLength)`
+
+Triggers the JavaScript-side pathway aggregation. Called internally by `sunburstServer` — you only need this if building custom server logic with the low-level widget.
