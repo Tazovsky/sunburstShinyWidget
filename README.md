@@ -153,7 +153,7 @@ callJS() → sendCustomMessage()
                           ←──────── Shiny.setInputValue("_pathway_group_datatable")
 ```
 
-The JavaScript layer is ported from OHDSI Atlas charting modules and uses D3.js v4 for the partition layout, arc rendering, and color scaling. See [docs/knowledge-transfer.md](docs/knowledge-transfer.md) for a full architectural deep-dive.
+The JavaScript layer is ported from OHDSI Atlas charting modules and uses D3.js v4 for the partition layout, arc rendering, and color scaling.
 
 ## Development
 
