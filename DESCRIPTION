@@ -4,25 +4,24 @@ Title: Sunburst HTML Widget
 Version: 0.4.7
 Authors@R: 
     person("Kamil", "Foltyński", , "kamil@foltynski.com", role = c("aut", "cre"))
-Description: Ported Sunburst plot based on d3.js library to HTML Shiny Widget
+Description: Provides a sunburst plot based on the d3.js library as an HTML
+    Shiny widget.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-    shiny,
-    shinydashboard
+    shiny
 Imports:
-    pkgload,
     htmlwidgets,
-    jsonlite,
     tidyr,
     bslib,
     glue,
     DT,
-    shiny.info,
     tibble,
     dplyr,
     purrr,
     scales,
     waiter
-RoxygenNote: 7.3.2
+Suggests:
+    jsonlite
+RoxygenNote: 7.3.3

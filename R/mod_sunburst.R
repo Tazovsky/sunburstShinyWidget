@@ -1,8 +1,8 @@
-#' sunburstUI
+#' Sunburst Shiny Module UI
 #'
-#' @param id
+#' @param id A character string for the module namespace.
 #'
-#' @return
+#' @return A \code{tagList} containing the sunburst UI elements.
 #' @export
 #' @rdname sunburst
 #' @import bslib shiny
@@ -47,14 +47,20 @@ sunburstUI <- function(id) {
 }
 
 
-#' sunburstServer
+#' Sunburst Shiny Module Server
 #'
-#' @param id
-#' @param json_path
-#' @param step_col_prefix
-#' @param .delim
+#' @param id A character string for the module namespace.
+#' @param chartData A list containing chart data including event codes and
+#'   cohort pathways.
+#' @param design A list containing design configuration for the sunburst plot.
+#' @param btn_font_size A character string for action button font size.
+#' @param show_colors_in_table Logical; if \code{TRUE}, show colored buttons in
+#'   the steps table.
+#' @param steps_table_export_name A reactive returning a custom export filename,
+#'   or \code{NULL} for the default.
+#' @param n_steps A reactive returning the number of pathway steps to display.
 #'
-#' @return
+#' @return A Shiny module server function.
 #' @export
 #' @rdname sunburst
 sunburstServer <- function(id,
@@ -188,8 +194,8 @@ sunburstServer <- function(id,
         dplyr::bind_rows()
 
       ev_codes  %>%
-        rowwise() %>%
-        mutate(buttons = match_color(name, ev_codes))
+        dplyr::rowwise() %>%
+        dplyr::mutate(buttons = match_color(name, ev_codes))
     })
 
     w <- waiter::Waiter$new(id = ns("click_data"))
@@ -211,7 +217,7 @@ sunburstServer <- function(id,
 
       df <- pg$data %>%
         lapply(function(x) {
-          x$path <- x$path %>% unlist() %>% head(n_steps()) %>% paste0(collapse = "-")
+          x$path <- x$path %>% unlist() %>% utils::head(n_steps()) %>% paste0(collapse = "-")
           x
         }) %>%
         dplyr::bind_rows() %>%
@@ -282,28 +288,27 @@ sunburstServer <- function(id,
 }
 
 
-#' customActionButton
+#' Create a Colored Action Button
 #'
-#' @param inputId
-#' @param label
-#' @param color
+#' @param inputId The input slot for the button.
+#' @param label The button label.
+#' @param color A CSS color string for the button background.
+#' @param font_size A CSS font size string.
 #'
-#' @return shiny::actionButton
+#' @return A \code{shiny::actionButton} with custom styling.
 #' @export
-#'
 customActionButton <- function(inputId, label, color, font_size = "10px") {
   shiny::actionButton(inputId, shiny::tags$strong(label), style = glue::glue("background-color: {color}; font-size: {font_size};'"))
 }
 
 
-#' match_color
+#' Match Event Names to Colors
 #'
-#' @param x
-#' @param eventCodes
+#' @param x A character string of comma-separated event names.
+#' @param eventCodes A data frame with \code{name} and \code{color} columns.
 #'
-#' @return data.frame
+#' @return A character string of HTML action buttons.
 #' @export
-#'
 match_color <- function(x, eventCodes) {
   event_names <- x %>%
     strsplit(",") %>%
@@ -329,14 +334,13 @@ match_color <- function(x, eventCodes) {
 }
 
 
-#' add_remain_and_diff_cols
+#' Add Remain and Diff Columns to a Data Frame
 #'
-#' @param btns_df
-#' @param totalPathways
+#' @param btns_df A data frame with a \code{Remain} column of numeric counts.
+#' @param totalPathways A numeric value for the total number of pathways.
 #'
-#' @return data.frame
+#' @return A data frame with formatted \code{Remain} and \code{Diff} columns.
 #' @export
-#'
 add_remain_and_diff_cols <- function(btns_df, totalPathways) {
   btns_df$Diff <- abs(c(totalPathways - btns_df$Remain[1], diff(btns_df$Remain)))
   btns_df$Diff_percent <- round((btns_df$Diff / totalPathways) * 100, 1)
