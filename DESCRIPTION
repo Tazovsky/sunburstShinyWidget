@@ -23,5 +23,9 @@ Imports:
     scales,
     waiter
 Suggests:
-    jsonlite
+    jsonlite,
+    testthat (>= 3.0.0),
+    covr,
+    mockery
+Config/testthat/edition: 3
 RoxygenNote: 7.3.3
