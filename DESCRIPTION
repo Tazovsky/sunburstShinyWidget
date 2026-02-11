@@ -1,7 +1,7 @@
 Package: sunburstShinyWidget
 Type: Package
 Title: Sunburst HTML Widget
-Version: 0.4.7
+Version: 0.5.0
 Authors@R: 
     person("Kamil", "Foltyński", , "kamil@foltynski.com", role = c("aut", "cre"))
 Description: Provides a sunburst plot based on the d3.js library as an HTML
