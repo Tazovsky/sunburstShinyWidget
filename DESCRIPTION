@@ -1,11 +1,11 @@
 Package: sunburstShinyWidget
 Type: Package
-Title: Sunburst HTML Widget
+Title: Sunburst 'HTML' Widget Based on 'd3.js'
 Version: 0.5.0
 Authors@R: 
     person("Kamil", "Foltyński", , "kamil@foltynski.com", role = c("aut", "cre"))
-Description: Provides a sunburst plot based on the d3.js library as an HTML
-    Shiny widget.
+Description: Provides a sunburst plot based on the 'd3.js' library as an HTML
+    'Shiny' widget.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
